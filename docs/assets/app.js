@@ -21,7 +21,7 @@
     { id: '04-mcp-basics',    order: 4, title: 'MCP 만들기와 등록 (실습 A 후반)', duration: '40분', difficulty: '초급' },
     { id: '05-single-agent',  order: 5, title: '단일 Agent 개발',            duration: '40분', difficulty: '중급' },
     { id: '06-multi-agent',   order: 6, title: 'Multi-Agent 협업',           duration: '40분', difficulty: '중급' },
-    { id: '07-capstone-news', order: 7, title: '캡스톤 — 한/미 뉴스 멀티에이전트', duration: '60분', difficulty: '중상' }
+    { id: '07-capstone-news', order: 7, title: '실습 B — 한/미 뉴스 멀티에이전트', duration: '60분', difficulty: '중상' }
   ];
   window.SDS_MODULES = MODULES;
   const DEFAULT_MODULE_ID = '00-setup';
@@ -535,7 +535,7 @@
   }
 
   // =========================================================================
-  // Mermaid render on static pages (practices.html capstone diagram)
+  // Mermaid render on static pages (practices.html 실습 B diagram)
   // =========================================================================
   async function initStaticMermaid() {
     const nodes = $$('pre.mermaid, .mermaid');

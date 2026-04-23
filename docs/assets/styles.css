@@ -638,7 +638,7 @@ details.faq .faq-body {
   color: inherit !important;
   padding: 0 !important;
 }
-/* Light-bg variant for practices.html capstone diagram card */
+/* Light-bg variant for practices.html 실습 B diagram card */
 .mermaid-card {
   background: linear-gradient(180deg, rgba(11, 18, 32, 0.98) 0%, rgba(15, 23, 42, 0.98) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);

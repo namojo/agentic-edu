@@ -1,13 +1,13 @@
 ---
 id: 07-capstone-news
-title: 캡스톤 — 한/미 뉴스 멀티에이전트
+title: 실습 B — 한/미 뉴스 멀티에이전트
 order: 7
 duration: 60분
 difficulty: 중상
 metaphor: '뉴스룸 팀' 전체를 내가 편성하는 최종 프로젝트
 ---
 
-# 07. 캡스톤 — 한/미 뉴스 멀티에이전트
+# 07. 실습 B — 한/미 뉴스 멀티에이전트
 
 > 오늘 배운 모든 개념(Skill · MCP · Agent · Multi-Agent · Workflow)을 하나의 산출물로 녹입니다. **키워드 한 마디**를 넣으면 30분도 안 걸려 한·미 매체 비교 브리프가 떨어지는 "나만의 뉴스룸"을 만듭니다.
 
@@ -70,7 +70,7 @@ flowchart LR
 - 모듈 04의 `file-manager-mcp` 또는 공식 `filesystem` MCP 등록됨
 - **`fetch` MCP 서버 등록** (새로 추가)
 - `vibe-1st` 프로젝트 아래에 `news-multiagent\` 작업 폴더 생성
-- 캡스톤 규모로 Gemini를 직접 쓰려면 `GEMINI_API_KEY` 환경변수 (모듈 00에서 등록 완료)
+- 실습 B 규모로 Gemini를 직접 쓰려면 `GEMINI_API_KEY` 환경변수 (모듈 00에서 등록 완료)
 
 ### 작업 폴더 만들기
 
@@ -88,7 +88,7 @@ mkdir news-multiagent\runs -Force
 
 ### 데이터 소스 전략
 
-본 캡스톤은 **공개 RSS**를 기본 전제로 합니다. 뉴스 API 무료 티어는 계정별 제약과 이용약관 검토가 필요해 학습용으로는 RSS가 가장 단순합니다.
+본 실습 B은 **공개 RSS**를 기본 전제로 합니다. 뉴스 API 무료 티어는 계정별 제약과 이용약관 검토가 필요해 학습용으로는 RSS가 가장 단순합니다.
 
 - **한국**: 네이버 뉴스 RSS, 연합뉴스 RSS, 다음 뉴스 RSS
 - **미국**: Google News RSS (`https://news.google.com/rss/search?q=...&hl=en-US`), Reuters RSS
@@ -647,7 +647,7 @@ sequenceDiagram
 
 ## 무료 티어 교실 운영 가이드 (강사용)
 
-교실 20명이 **동시에** 캡스톤을 돌리면 어떤 일이 생길까요?
+교실 20명이 **동시에** 실습 B을 돌리면 어떤 일이 생길까요?
 
 - Gemini `flash` 기준 **일일 250 RPD**를 20명이 나눠 쓰면 1인당 ~12회. 본 파이프라인은 Agent 4개가 각각 수 번 LLM을 호출하므로 **1~2회 실행이면 한도 소진** 가능.
 - 옵션 3가지:
@@ -762,7 +762,7 @@ flowchart LR
 
 ## 핵심 요약
 
-- 캡스톤은 오늘 배운 모든 개념(Skill · MCP · Agent · Multi · Workflow)의 통합 연습입니다.
+- 실습 B은 오늘 배운 모든 개념(Skill · MCP · Agent · Multi · Workflow)의 통합 연습입니다.
 - 4개 Agent: kr-news / us-news / fact-checker / orchestrator. 병렬 + 합의 + 오케스트레이터의 복합 패턴.
 - 공용 워크스페이스(`_workspace\*.json|.md`)로 중간 산출물을 파일로 남겨 관찰 가능성 확보.
 - 심화 C1(일본) · C2(Playwright) · C3(Slack)로 수업 후에도 키워보세요.

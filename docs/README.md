@@ -1,6 +1,6 @@
 # SDS Agentic AI 1회차 — 교육 사이트 (`docs/`)
 
-정적 HTML + vanilla JS로 구성된 사내 교육 사이트. 빌드 스텝이 없으며 마크다운 파일을 고치면 바로 반영됩니다. 8개 모듈(00 환경 설정 ~ 07 캡스톤), 총 4.5시간.
+정적 HTML + vanilla JS로 구성된 사내 교육 사이트. 빌드 스텝이 없으며 마크다운 파일을 고치면 바로 반영됩니다. 8개 모듈(00 환경 설정 ~ 07 실습 B), 총 4.5시간.
 
 ## GitHub Pages 배포 (권장)
 
@@ -56,9 +56,9 @@ python -m http.server 8000
 
 ```
 docs/
-├── index.html          # 랜딩 (Hero · Why Now · 8 모듈 그리드 · 캡스톤 · FAQ)
+├── index.html          # 랜딩 (Hero · Why Now · 8 모듈 그리드 · 실습 B · FAQ)
 ├── curriculum.html     # 모듈 뷰어 (사이드바 + 마크다운 + TOC + 슬라이드 + Mermaid)
-├── practices.html      # 실습 A / 캡스톤 B(Mermaid 아키텍처) / 심화 C1~C3
+├── practices.html      # 실습 A / 실습 B(Mermaid 아키텍처) / 심화 C1~C3
 ├── resources.html      # Cursor 치트시트(Windows 기본) · MCP 카탈로그 · Gemini 한도 · 용어집
 ├── 404.html            # index.html 복사본 (GH Pages SPA 진입 보호)
 ├── .nojekyll           # Jekyll 스킵

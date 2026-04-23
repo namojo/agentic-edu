@@ -120,7 +120,7 @@
 - **풀이**: Google AI Studio에서 발급한 키로 호출하는 LLM API. 본 강의는 Cursor 내장 LLM과 **별도**로, 터미널·Python 스크립트에서 `google-genai` SDK를 써서 호출합니다. (Cursor Free 플랜은 Gemini BYOK 미지원)
 - **처음 등장**: 모듈 00·01.
 
-## 17. Plan C (플랜 C, 강의 규약)
+## 17. 하이브리드 환경 (하이브리드 환경, 강의 규약)
 
 - **비유**: "두 탈것을 섞어 타기 — Cursor로는 IDE 경험을, Gemini로는 순수 API 실습"
 - **풀이**: 본 강의의 학습 경로 규약. Cursor Free + 내장 LLM(대화·편집)은 기본 환경, Gemini API는 별도 터미널(Python)로 호출합니다. BYOK 가정 없음.
@@ -158,7 +158,7 @@
   - `file-manager-mcp` — 모듈 04 MCP 서버
   - `email-summarizer` — 모듈 05 단일 Agent
   - `meeting-notes-extractor` — 모듈 06 Multi-Agent
-  - `news-multiagent` — 모듈 07 캡스톤
+  - `news-multiagent` — 모듈 07 실습 B
 - **처음 등장**: 모듈 03~07 각각.
 
 ---
