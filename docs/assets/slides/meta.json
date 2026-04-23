@@ -118,10 +118,10 @@
       "order": 5,
       "type": "architecture-diagram",
       "title": "4시간 로드맵",
-      "caption": "M00 → M07, 실습 A · 캡스톤 B",
+      "caption": "M00 → M07, 실습 A · 실습 B",
       "imagePath": "assets/slides/01-vibe-coding-05-roadmap.png",
       "fallback": false,
-      "prompt": "Editorial 16:9 education slide for a Korean tech course.\nContent type: timeline diagram\nMain content: Horizontal timeline with 8 numbered stations M00 through M07 connected by a blue gradient track. Each station is a small glass pill with Korean label: M00 환경설정 / M01 바이브코딩 / M02 Cursor / M03 Skill / M04 MCP / M05 Agent / M06 Multi / M07 캡스톤. Below the track, two bracket labels: '실습 A 파일관리' spanning M03-M04, and '캡스톤 B 뉴스' pointing to M07.\nKorean headline (embed at top, large and sharp): \"4시간 로드맵\"\nKorean body text embedded as sharp typography: M00 환경설정 → M07 캡스톤. 실습 A 파일관리, 캡스톤 B 뉴스.\nStyle: deep indigo (#312e81) to electric blue (#2563eb) gradient background, glassmorphism cards with soft blur and white 10% borders, Pretendard-like Korean sans-serif typography, sharp vector-feel layout, generous negative space, editorial modern. Avoid photorealistic humans, stock imagery, brand logos, cluttered ui screenshots. Aspect 16:9. High resolution. Embed Korean text clearly so a student can read it from 3 meters away.\n"
+      "prompt": "Editorial 16:9 education slide for a Korean tech course.\nContent type: timeline diagram\nMain content: Horizontal timeline with 8 numbered stations M00 through M07 connected by a blue gradient track. Each station is a small glass pill with Korean label: M00 환경설정 / M01 바이브코딩 / M02 Cursor / M03 Skill / M04 MCP / M05 Agent / M06 Multi / M07 실습 B. Below the track, two bracket labels: '실습 A 파일관리' spanning M03-M04, and '실습 B 뉴스' pointing to M07.\nKorean headline (embed at top, large and sharp): \"4시간 로드맵\"\nKorean body text embedded as sharp typography: M00 환경설정 → M07 실습 B. 실습 A 파일관리, 실습 B 뉴스.\nStyle: deep indigo (#312e81) to electric blue (#2563eb) gradient background, glassmorphism cards with soft blur and white 10% borders, Pretendard-like Korean sans-serif typography, sharp vector-feel layout, generous negative space, editorial modern. Avoid photorealistic humans, stock imagery, brand logos, cluttered ui screenshots. Aspect 16:9. High resolution. Embed Korean text clearly so a student can read it from 3 meters away.\n"
     },
     {
       "id": "02-cursor-tour-01-overview",
@@ -502,11 +502,11 @@
       "moduleId": "07-capstone-news",
       "order": 1,
       "type": "section-title",
-      "title": "캡스톤 · 뉴스룸",
+      "title": "실습 B · 뉴스룸",
       "caption": "키워드 한 마디 → 30분 브리프",
       "imagePath": "assets/slides/07-capstone-news-01-cover.png",
       "fallback": false,
-      "prompt": "Editorial 16:9 education slide for a Korean tech course.\nContent type: section title with newsroom metaphor\nMain content: Large Korean headline. Right: a minimalist newsroom illustration — 4 small monitor icons on a wall labelled KR, US, FC, Orch. A stylized newspaper unfolding from the bottom labelled 'Report'. Glass cards, neon blue.\nKorean headline (embed at top, large and sharp): \"캡스톤 · 뉴스룸\"\nKorean body text embedded as sharp typography: 키워드 한 마디 → 30분 안에 한·미 비교 브리프.\nStyle: deep indigo (#312e81) to electric blue (#2563eb) gradient background, glassmorphism cards with soft blur and white 10% borders, Pretendard-like Korean sans-serif typography, sharp vector-feel layout, generous negative space, editorial modern. Avoid photorealistic humans, stock imagery, brand logos, cluttered ui screenshots. Aspect 16:9. High resolution. Embed Korean text clearly so a student can read it from 3 meters away.\n"
+      "prompt": "Editorial 16:9 education slide for a Korean tech course.\nContent type: section title with newsroom metaphor\nMain content: Large Korean headline. Right: a minimalist newsroom illustration — 4 small monitor icons on a wall labelled KR, US, FC, Orch. A stylized newspaper unfolding from the bottom labelled 'Report'. Glass cards, neon blue.\nKorean headline (embed at top, large and sharp): \"실습 B · 뉴스룸\"\nKorean body text embedded as sharp typography: 키워드 한 마디 → 30분 안에 한·미 비교 브리프.\nStyle: deep indigo (#312e81) to electric blue (#2563eb) gradient background, glassmorphism cards with soft blur and white 10% borders, Pretendard-like Korean sans-serif typography, sharp vector-feel layout, generous negative space, editorial modern. Avoid photorealistic humans, stock imagery, brand logos, cluttered ui screenshots. Aspect 16:9. High resolution. Embed Korean text clearly so a student can read it from 3 meters away.\n"
     },
     {
       "id": "07-capstone-news-02-scenario",

@@ -325,10 +325,22 @@ mcp\file-manager-mcp\ 폴더를 만들고 MCP 서버 1개를 구현해줘.
 | 상황 | 추천 방법 |
 |------|----------|
 | MCP 구조를 처음 배울 때 | A (수동). SDK 함수·스키마를 직접 봐야 이해됨 |
-| 프로토타입이 급할 때 | B (AI). 30초 만에 초안 |
+| 프로토타입이 급할 때 | B (AI 자연어). 30초 만에 초안 |
 | 실무에서 확장 중 | B로 뼈대 + A의 눈으로 검토·보강 |
 
-💡 커뮤니티에서 언급되는 "create-skill" / "create-subagent" 유사 명령은 Cursor 공식 슬래시가 아닙니다. MCP 서버 생성도 마찬가지로 공식 슬래시가 없습니다. 자연어(B) + 수동(A)가 정식 방법입니다.
+### 참고: 기본 제공 스킬은 MCP 생성용이 없다
+
+모듈 02·03·05에서 본 `create-rule` / `create-skill` / `create-subagent` / `create-hook` 4종은 **Rule·Skill·서브에이전트·Hook 생성 전용**입니다. MCP **서버 코드** 자체를 만드는 기본 제공 스킬은 없습니다.
+
+대신 방법 B(자연어)로 Agent 모드에 요청하면 Cursor가 직접 TypeScript/Python 프로젝트를 만들어 줍니다. 예:
+
+```
+TypeScript로 파일 관리 MCP 서버 만들어줘.
+위치 mcp\file-manager-mcp\. 도구 4개: list_files, move_file, rename_file, find_duplicates.
+안전하게 사용자 루트 밖 접근 차단 포함. package.json + index.ts + README 한 세트로.
+```
+
+💡 `~/.cursor/skills-cursor/`에 들어있는 "create-X" 이름의 4종은 **Cursor가 번들로 제공하는 Skill**입니다. 이름이 비슷한 `/create-skill` **슬래시 명령**과는 다른 개념이니 헷갈리지 마세요 — 공식 슬래시 명령은 없고, 기본 스킬이 있을 뿐입니다.
 
 ## Step 1. Cursor에 등록
 

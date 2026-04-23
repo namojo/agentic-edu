@@ -259,11 +259,29 @@ is_background: false
 - [ ] 정지 규칙 (파일 수 제한, tool 호출 제한) 있음
 - [ ] 저장 경로 `inbox\digest.md` 명시
 
+### 방법 C: 기본 제공 `create-subagent` 스킬 사용 (가장 짧은 길)
+
+Cursor의 `~/.cursor/skills-cursor/` 기본 제공 모음에는 `create-subagent` 스킬이 있어, Agent 모드에서 서브에이전트를 만들 때 자동으로 호출됩니다. 역할·원칙·프로토콜 섹션 뼈대를 일관된 형식으로 만들어 주므로, 모듈 03의 `create-skill`과 짝이 되는 도우미입니다.
+
+**실습:** Cursor를 **Agent 모드**로 두고 다음과 같이 요청합니다.
+
+```
+email-summarizer 라는 이름의 서브에이전트를 만들어줘.
+위치는 %USERPROFILE%\.cursor\agents\email-summarizer.md.
+역할: inbox\ 폴더의 .txt 메일을 읽고 오늘 자 요약을 digest.md에 저장.
+원칙: 민감 정보는 옮기지 말고 요약에만 포함, 모호하면 사용자에게 질문.
+```
+
+요청을 받은 Agent 모드는 `create-subagent` 기본 스킬을 꺼내 사용하고, 결과로 `.md` 파일이 아래 5개 섹션(역할·작업 원칙·입력/출력·에러 핸들링·협업) 뼈대와 함께 생성됩니다. 내가 할 일은 본문의 특수 원칙과 예외 케이스만 다듬는 것입니다.
+
+> ℹ️ 기본 제공 모음에는 이밖에 `create-skill`(모듈 03), `create-rule`(모듈 02), `create-hook`도 포함되어 있습니다. 모두 같은 패턴 — "Agent 모드에 자연어로 요청하면 전용 스킬이 알아서 호출" — 입니다.
+
 ### 언제 어느 걸
 
-- 구조 학습 목적 → A
-- 빠르게 프로토타입 → B
-- 실무: B로 뼈대, A로 원칙·예외 다듬기
+- 구조 학습 목적 → A (수동)
+- 일반적인 프로토타입 → B (AI 자연어)
+- **가장 빠르게·일관된 포맷** → **C (기본 제공 `create-subagent`)**
+- 실무: C로 뼈대를 뽑고, A의 눈으로 한 번 읽어 원칙·예외를 다듬기
 
 ## Step 2. Agent 호출
 

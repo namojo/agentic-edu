@@ -202,6 +202,29 @@ for 루프 예시 하나 보여줘.
 
 💡 규칙이 안 먹으면: frontmatter의 `alwaysApply: true`와 `.cursor\rules\` 경로를 다시 점검. Cursor 재시작으로도 해결되는 경우가 있습니다.
 
+### 더 짧은 길: 기본 제공 `create-rule` 스킬
+
+Cursor에는 `~/.cursor/skills-cursor/` 아래에 Rule·Skill·서브에이전트·Hook을 각각 만들어주는 **기본 제공 스킬 4종**이 번들되어 있습니다. 그 중 Rule용이 `create-rule`입니다. 위 Step 1에서 파일 내용을 직접 붙여 넣었지만, Agent 모드에서 자연어로 요청하면 `create-rule`이 알아서 `.mdc` frontmatter까지 붙인 파일을 만들어 줍니다.
+
+| 기본 스킬 | 역할 | 이번 교육에서 언제 |
+|----------|------|-------------------|
+| `create-rule` | `.cursor\rules\<name>.mdc` 생성 | 이번 모듈 |
+| `create-skill` | `~/.cursor/skills/<name>/SKILL.md` 생성 | 모듈 03 |
+| `create-subagent` | `~/.cursor/agents/<name>.md` 생성 | 모듈 05 |
+| `create-hook` | 자동 실행되는 훅 스크립트 생성 | 심화 주제 |
+
+**실습:** Step 1을 다음 요청 한 줄로 대체해 봅니다.
+
+```
+ko-style 이라는 Rule 하나 만들어줘.
+alwaysApply 는 true, 설명은 '한국어 답변 스타일'.
+규칙: 모든 답변 한국어 존댓말, 코드 블록에 한국어 해설 2~3줄, 불필요한 사과 생략.
+```
+
+Agent 모드가 `create-rule`을 자동으로 호출해 `.mdc` 파일을 채워 줍니다. 결과를 열어 규칙 몇 줄만 내 스타일로 다듬으면 됩니다.
+
+> ℹ️ 기본 제공 스킬은 Cursor 설치 시 `~/.cursor/skills-cursor/`에 함께 깔립니다. 이 경로가 보이지 않으면 Cursor 최신 버전으로 업데이트하세요.
+
 ## 실습 3 (보너스 A3): CSV 요약봇 (10분)
 
 Cursor의 파일 컨텍스트 주입과 모드 조합을 CSV 분석에 써봅니다.

@@ -260,13 +260,37 @@ AI가 만든 파일을 그대로 쓰면 안 됩니다. 아래 체크포인트로
 
 부족하면 Chat에 "발화 예시 한 개 더 추가해줘"처럼 후속 요청을 던지세요.
 
+### 방법 C: 기본 제공 `create-skill` 스킬 사용 (가장 짧은 길)
+
+Cursor를 설치하면 `~/.cursor/skills-cursor/` 경로에 **기본 제공 스킬 모음**이 함께 깔립니다. 그 중 하나가 `create-skill` 스킬입니다. Skill 뼈대를 만들 때 이 전용 스킬이 알아서 폴더·frontmatter·README·예시까지 채워 주기 때문에, 방법 B보다 한 단계 더 짧게 결과를 얻을 수 있습니다.
+
+| 기본 제공 스킬 | 역할 | 대응 모듈 |
+|---------------|------|----------|
+| `create-skill` | 새 Skill(`SKILL.md` + 폴더)을 처음부터 만들기 | 이번 모듈 |
+| `create-subagent` | 새 서브에이전트(`.cursor/agents/<name>.md`) 만들기 | 모듈 05 |
+| `create-rule` | 새 Rule(`.cursor/rules/<name>.mdc`) 만들기 | 모듈 02 |
+| `create-hook` | 자동 실행되는 훅 스크립트 만들기 | 심화 주제 |
+
+**실습:** Cursor를 **Agent 모드**로 두고 다음과 같이 요청합니다.
+
+```
+file-organizer 라는 이름의 Skill 하나 만들어줘.
+위치는 %USERPROFILE%\.cursor\skills\file-organizer\SKILL.md.
+역할: 내 Downloads 폴더의 파일을 확장자별로 정리하는 규칙.
+```
+
+Agent 모드는 요청을 받으면 자동으로 `create-skill` 기본 스킬을 꺼내 씁니다. 결과로 폴더와 `SKILL.md`가 만들어지고, frontmatter·`description`·예시 섹션이 채워진 상태로 나옵니다. 내가 할 일은 "내 상황에 맞게 본문을 다듬는 것" 뿐입니다.
+
+> ℹ️ `~/.cursor/skills-cursor/` 폴더가 보이지 않으면 Cursor를 최신 버전으로 업데이트하세요. Windows에선 `%USERPROFILE%\.cursor\skills-cursor\` 입니다.
+
 ### 언제 어느 걸 쓰나
 
 - **구조를 확실히 이해하고 싶으면** → 방법 A (수동).
-- **빠르게 결과를 보고 싶고 반복 작업이면** → 방법 B (AI).
-- **실무에서는** → 방법 B로 뼈대를 만들고, 방법 A의 눈으로 다듬기.
+- **빠르게 결과를 보고 싶으면** → 방법 B (일반 AI 자연어).
+- **가장 빠르게, 실수 없이 만들고 싶으면** → **방법 C (기본 제공 `create-skill` 스킬)**.
+- **실무에서는** → 방법 C로 뼈대를 찍고 → 방법 A의 눈으로 한 번 읽어 다듬기.
 
-💡 커뮤니티에서 자주 보이는 `/create-skill` 슬래시 명령은 **Cursor 공식 명령이 아닙니다.** 일부 툴킷·확장 기능에서 만든 커뮤니티 표현입니다. 공식은 위 두 방법뿐입니다.
+💡 커뮤니티에서 자주 보이는 `/create-skill` **슬래시 명령**은 Cursor 공식 명령이 아닙니다. 반면 `~/.cursor/skills-cursor/create-skill/` **스킬**은 Cursor가 번들로 제공하는 실제 스킬입니다. 이름이 같아 혼동하기 쉬운데, "슬래시 명령이 아니라 스킬로 존재한다"고 기억하세요.
 
 ## Step 2. 트리거 테스트 — Skill 단독 동작 확인
 

@@ -649,9 +649,9 @@ sequenceDiagram
 
 교실 20명이 **동시에** 실습 B을 돌리면 어떤 일이 생길까요?
 
-- Gemini `flash` 기준 **일일 250 RPD**를 20명이 나눠 쓰면 1인당 ~12회. 본 파이프라인은 Agent 4개가 각각 수 번 LLM을 호출하므로 **1~2회 실행이면 한도 소진** 가능.
+- Gemini `flash` 기준 **개인당 일일 250 RPD** 한도. 본 파이프라인은 Agent 4개가 각각 수 번 LLM을 호출하므로 한 번 실행에 10~20회 호출이 발생할 수 있습니다. 개인 키 기준으로도 반복 실행을 너무 많이 하면 하루 한도에 근접할 수 있습니다.
 - 옵션 3가지:
-  - **(A) `flash-lite`로 교체** (RPD 1,000). 다수 인원 실습에 유리.
+  - **(A) `flash-lite`로 교체** (RPD 1,000). 반복 실행이 많을 때 권장.
   - **(B) 더미 데이터 모드**: RSS 호출 없이 사전 준비한 `_workspace\kr-sample.json`, `_workspace\us-sample.json`을 입력으로 받아 파이프라인을 검증.
   - **(C) Cursor 내장 LLM만 사용** (Gemini 호출 없이). 이 경우 Cursor Free 플랜의 Agent 요청 한도가 병목.
 
@@ -755,7 +755,7 @@ flowchart LR
   **해결**: LLM은 현재 날짜를 모릅니다. orchestrator 프롬프트에 "오늘은 {오늘 날짜} 입니다"를 주입하거나, 파일명 생성을 tool에게 `get_current_date` 호출로 맡기세요.
 
 - **증상**: "Rate limit exceeded" 에러 빈발.
-  **해결**: 교실 다수 동시 실행 중일 가능성. `gemini-2.5-flash-lite`로 전환하거나 더미 데이터 모드로 시연.
+  **해결**: 본인 일일 한도 소진 가능성. `gemini-2.5-flash-lite`로 전환하거나 더미 데이터 모드로 재시도.
 
 - **증상**: fetch MCP가 "403 Forbidden"이나 "User-Agent required"로 실패.
   **해결**: 일부 뉴스 사이트는 기본 fetch를 거부. Agent 프롬프트에 "fetch 실패 시 Google News RSS로 fallback" 경로를 강제하거나, C2 과제처럼 Playwright 기반 수집으로 전환 고려.
@@ -779,5 +779,5 @@ flowchart LR
 - 시나리오: 키워드 한 마디 → 30분 내 한·미 비교 브리프.
 - 아키텍처: 사용자 → orchestrator → (kr-news ‖ us-news) → fact-checker → 리포트.
 - fetch MCP로 RSS/본문 수집. 파일 기반 워크스페이스로 관찰 가능성 확보.
-- 무료 티어 대응: flash-lite / 더미 데이터 / Cursor 내장 LLM 단독 — 3옵션.
+- 개인 한도 대응: flash-lite로 전환 / 더미 데이터 모드 / Cursor 내장 LLM 단독 — 3옵션.
 - 심화 C1~C3로 "내가 키우는 시스템"으로 진화.

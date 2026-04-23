@@ -161,6 +161,17 @@
   - `news-multiagent` — 모듈 07 실습 B
 - **처음 등장**: 모듈 03~07 각각.
 
+## 23. `~/.cursor/skills-cursor/` 기본 제공 스킬 4종
+
+- **비유**: "Cursor가 설치와 함께 선물해 주는 공구 4개"
+- **풀이**: Cursor를 설치하면 `~/.cursor/skills-cursor/` (Windows: `%USERPROFILE%\.cursor\skills-cursor\`) 아래에 **4개의 기본 제공 Skill**이 깔립니다. Agent 모드에서 자연어로 "무엇을 만들어 줘" 요청을 받으면 해당하는 스킬이 자동으로 호출되어 구조를 채워 줍니다.
+  - `create-skill` — 새 Skill(`SKILL.md` + 폴더) 생성 (모듈 03에서 사용)
+  - `create-subagent` — 새 서브에이전트(`.cursor/agents/<name>.md`) 생성 (모듈 05)
+  - `create-rule` — 새 Rule(`.cursor/rules/<name>.mdc`) 생성 (모듈 02)
+  - `create-hook` — 자동 실행되는 훅 스크립트 생성 (심화 주제)
+- **주의**: 커뮤니티 글에서 언급되는 `/create-skill` **슬래시 명령**은 Cursor 공식 명령이 아닙니다. 위 4개는 **슬래시 명령이 아니라 번들된 Skill**입니다. 이름이 같아 혼동하기 쉽습니다.
+- **처음 등장**: 모듈 02/03/05.
+
 ---
 
 ## 참고 약어
