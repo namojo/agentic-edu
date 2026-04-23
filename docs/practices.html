@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>실습 A / 캡스톤 B · SDS Agentic AI 1회차</title>
+  <meta name="description" content="실습 A — 파일 관리 MCP + Skill. 캡스톤 B — 한·미 뉴스 멀티에이전트. 단계 다이어그램과 체크리스트로 정리." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>@import "https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css";</style>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="bg-[#0f172a] text-white font-sans selection:bg-blue-500">
+
+<!-- NAV -->
+<nav id="sdsNav" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-3 nav-scrolled">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+    <a href="index.html" class="flex items-center gap-2 text-white">
+      <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center shadow-lg"><i data-lucide="sparkles" class="w-5 h-5"></i></span>
+      <span class="font-black tracking-tight text-lg">SDS Agentic AI</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 font-medium text-sm text-white/80">
+      <a href="index.html#overview" class="hover:text-white">개요</a>
+      <a href="curriculum.html" class="hover:text-white">커리큘럼</a>
+      <a href="practices.html" class="text-blue-300">실습</a>
+      <a href="resources.html" class="hover:text-white">자료</a>
+    </div>
+    <button id="sdsDrawerOpen" aria-label="메뉴 열기" class="md:hidden p-2 rounded-full text-white hover:bg-white/10">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="pt-32 pb-10 px-6 md:px-12 lg:px-24 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-900 relative overflow-hidden">
+  <div class="orb" style="top:-30%;right:-10%;width:55%;height:55%;background:rgba(99,102,241,0.3);"></div>
+  <div class="orb" style="bottom:-40%;left:-10%;width:50%;height:50%;background:rgba(96,165,250,0.25);"></div>
+  <div class="max-w-6xl mx-auto relative">
+    <span class="section-label-dark mb-5"><i data-lucide="wrench" class="w-3.5 h-3.5"></i> 실습 상세</span>
+    <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-4">두 개의 실습,<br/>하나의 완결된 경험</h1>
+    <p class="text-blue-100/90 text-lg max-w-2xl leading-relaxed">
+      실습 A는 "Skill = 매뉴얼, MCP = 도구"의 분리 감각을, 캡스톤 B는 4개 에이전트 협업의 오케스트레이션 감각을 책임집니다.
+    </p>
+  </div>
+</header>
+
+<!-- PRACTICE A -->
+<section id="practice-a" class="py-24 px-6 md:px-12 lg:px-24 bg-[#0f172a]">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="num-badge" style="background:linear-gradient(135deg,#60a5fa,#2563eb);">A</span>
+      <div>
+        <div class="text-xs uppercase tracking-widest text-blue-300 font-semibold">실습 A · 모듈 03 + 04</div>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">파일 관리 MCP + Skill 만들기</h2>
+      </div>
+    </div>
+    <p class="text-slate-300 text-lg max-w-3xl leading-relaxed mb-12">
+      로컬 파일 시스템 대상. 하나의 자연어 요청("다운로드 폴더 정리해줘")으로 Skill이 매뉴얼을 펴고 MCP가 실제 이동을 수행하는 흐름을 완성합니다.
+    </p>
+
+    <!-- 5-step flow -->
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-14">
+      <div class="glass p-5 text-center">
+        <div class="num-badge mx-auto mb-3" style="width:2.5rem;height:2.5rem;font-size:0.9rem;">1</div>
+        <div class="text-sm font-semibold text-white">Skill 작성</div>
+        <div class="text-xs text-slate-400 mt-1"><code>file-organizer/SKILL.md</code></div>
+      </div>
+      <div class="glass p-5 text-center">
+        <div class="num-badge mx-auto mb-3" style="width:2.5rem;height:2.5rem;font-size:0.9rem;">2</div>
+        <div class="text-sm font-semibold text-white">Cursor 등록</div>
+        <div class="text-xs text-slate-400 mt-1"><code>%USERPROFILE%\.cursor\skills\</code></div>
+      </div>
+      <div class="glass p-5 text-center">
+        <div class="num-badge mx-auto mb-3" style="width:2.5rem;height:2.5rem;font-size:0.9rem;">3</div>
+        <div class="text-sm font-semibold text-white">대화로 정리</div>
+        <div class="text-xs text-slate-400 mt-1">"Downloads 폴더 정리해줘"</div>
+      </div>
+      <div class="glass p-5 text-center">
+        <div class="num-badge mx-auto mb-3" style="width:2.5rem;height:2.5rem;font-size:0.9rem;">4</div>
+        <div class="text-sm font-semibold text-white">한계 발견</div>
+        <div class="text-xs text-slate-400 mt-1">Skill만으론 실행 불가</div>
+      </div>
+      <div class="glass p-5 text-center">
+        <div class="num-badge mx-auto mb-3" style="width:2.5rem;height:2.5rem;font-size:0.9rem;">5</div>
+        <div class="text-sm font-semibold text-white">MCP 연결 · 재시도</div>
+        <div class="text-xs text-slate-400 mt-1"><code>file-manager-mcp</code> + mcp.json</div>
+      </div>
+    </div>
+
+    <!-- Skill vs MCP comparison -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-14">
+      <div class="rounded-[2rem] p-7 bg-gradient-to-br from-blue-900/50 to-indigo-900/50 border border-white/10">
+        <div class="flex items-center gap-2 mb-3 text-blue-200"><i data-lucide="book-open" class="w-5 h-5"></i><span class="text-sm uppercase tracking-wider font-semibold">Skill</span></div>
+        <h3 class="text-2xl font-bold mb-3">매뉴얼 — 지식 · 절차</h3>
+        <ul class="text-slate-300 text-sm space-y-2">
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-300 mt-0.5 shrink-0"></i>SKILL.md 1장 (markdown + frontmatter)</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-300 mt-0.5 shrink-0"></i>description의 트리거 표현에 매칭되면 자동 로드</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-300 mt-0.5 shrink-0"></i>저장 위치: <code class="bg-white/10 px-2 py-0.5 rounded">%USERPROFILE%\.cursor\skills\file-organizer\SKILL.md</code> <span class="text-xs text-slate-400">(macOS: <code>~/.cursor/skills/...</code>)</span></li>
+          <li class="flex gap-2"><i data-lucide="x" class="w-4 h-4 text-red-300 mt-0.5 shrink-0"></i>실제 파일 이동·삭제 같은 "실행"은 불가</li>
+        </ul>
+      </div>
+      <div class="rounded-[2rem] p-7 bg-gradient-to-br from-emerald-900/50 to-blue-900/50 border border-white/10">
+        <div class="flex items-center gap-2 mb-3 text-emerald-200"><i data-lucide="plug-zap" class="w-5 h-5"></i><span class="text-sm uppercase tracking-wider font-semibold">MCP</span></div>
+        <h3 class="text-2xl font-bold mb-3">도구 — 실행권 · 손과 발</h3>
+        <ul class="text-slate-300 text-sm space-y-2">
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-300 mt-0.5 shrink-0"></i>JSON-RPC 2.0 기반 표준 프로토콜 (스펙 2025-11-25)</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-300 mt-0.5 shrink-0"></i>Host(Cursor) ↔ Client ↔ Server(능력 제공자)</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-300 mt-0.5 shrink-0"></i>등록 위치: <code class="bg-white/10 px-2 py-0.5 rounded">%USERPROFILE%\.cursor\mcp.json</code> <span class="text-xs text-slate-400">(macOS: <code>~/.cursor/mcp.json</code>)</span></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-300 mt-0.5 shrink-0"></i>실제 파일 이동·쓰기·검색을 실행 (공식 <code>server-filesystem</code> 또는 직접 만든 <code>file-manager-mcp</code>)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Code snippet -->
+    <div class="rounded-[2rem] bg-[#0b1220] border border-white/10 p-6 mb-4">
+      <div class="flex items-center gap-2 text-slate-400 text-xs mb-3"><i data-lucide="file-code-2" class="w-4 h-4"></i><code>%USERPROFILE%\.cursor\mcp.json</code> — 공식 filesystem 서버 등록 (Windows 기준)</div>
+<pre class="text-sm text-slate-200 leading-relaxed overflow-x-auto"><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "C:\\Users\\&lt;사용자&gt;\\Downloads"
+      ]
+    }
+  }
+}</code></pre>
+    </div>
+    <p class="text-xs text-slate-500">이 한 줄이면 끝. Cursor를 재시작하고 Settings → MCP에서 filesystem 도구 목록(<code>list_directory</code>, <code>move_file</code>, <code>search_files</code>…)을 확인합니다. macOS에선 <code>/Users/&lt;me&gt;/Downloads</code> 경로 사용.</p>
+  </div>
+</section>
+
+<!-- CAPSTONE B -->
+<section id="capstone" class="py-24 px-6 md:px-12 lg:px-24 bg-gradient-to-b from-[#0f172a] via-[#111c3a] to-[#0f172a] border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="num-badge" style="background:linear-gradient(135deg,#a5b4fc,#6366f1);">B</span>
+      <div>
+        <div class="text-xs uppercase tracking-widest text-indigo-300 font-semibold">캡스톤 B · 모듈 05 ~ 07</div>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">한 / 미 뉴스 멀티에이전트</h2>
+      </div>
+    </div>
+    <p class="text-slate-300 text-lg max-w-3xl leading-relaxed mb-12">
+      키워드 1개 입력 → 병렬 수집 → 팩트체크 → 통합 리포트. 4개 에이전트와 파일 MCP 재사용, 공용 워크스페이스 패턴을 모두 체험합니다. 작업 폴더: <code class="bg-white/5 border border-white/10 px-1.5 py-0.5 rounded text-sm">news-multiagent/</code>.
+    </p>
+
+    <!-- 4 agent cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-14">
+      <div class="rounded-[2rem] p-7 bg-white/5 border border-white/10 backdrop-blur">
+        <div class="flex items-center gap-2 mb-3 text-blue-200"><i data-lucide="flag" class="w-5 h-5"></i><span class="text-xs uppercase tracking-wider font-semibold">kr-news-agent</span></div>
+        <h3 class="text-xl font-bold mb-2">한국 뉴스 수집 · 1차 요약</h3>
+        <p class="text-slate-300 text-sm leading-relaxed">네이버/다음 RSS 또는 공식 API에서 키워드 관련 상위 5개 기사를 가져와 헤드라인·핵심 수치를 정규화. 산출: <code class="bg-white/10 px-1.5 py-0.5 rounded text-xs">_workspace/kr.json</code></p>
+      </div>
+      <div class="rounded-[2rem] p-7 bg-white/5 border border-white/10 backdrop-blur">
+        <div class="flex items-center gap-2 mb-3 text-blue-200"><i data-lucide="flag" class="w-5 h-5"></i><span class="text-xs uppercase tracking-wider font-semibold">us-news-agent</span></div>
+        <h3 class="text-xl font-bold mb-2">미국 뉴스 수집 · 1차 요약</h3>
+        <p class="text-slate-300 text-sm leading-relaxed">Google News RSS 등 공개 소스에서 상위 5개 수집 후 kr과 동일한 스키마로 정규화. 산출: <code class="bg-white/10 px-1.5 py-0.5 rounded text-xs">_workspace/us.json</code></p>
+      </div>
+      <div class="rounded-[2rem] p-7 bg-emerald-900/20 border border-emerald-400/20 backdrop-blur">
+        <div class="flex items-center gap-2 mb-3 text-emerald-200"><i data-lucide="shield-check" class="w-5 h-5"></i><span class="text-xs uppercase tracking-wider font-semibold">fact-checker</span></div>
+        <h3 class="text-xl font-bold mb-2">양측 교차검증 · 불일치 플래그</h3>
+        <p class="text-slate-300 text-sm leading-relaxed">kr/us 두 파일을 로드해 주장·수치·인용문을 매칭하고 최소 2개 독립 출처 교차 규칙을 적용. 산출: <code class="bg-white/10 px-1.5 py-0.5 rounded text-xs">_workspace/facts.md</code></p>
+      </div>
+      <div class="rounded-[2rem] p-7 bg-indigo-900/30 border border-indigo-400/20 backdrop-blur">
+        <div class="flex items-center gap-2 mb-3 text-indigo-200"><i data-lucide="crown" class="w-5 h-5"></i><span class="text-xs uppercase tracking-wider font-semibold">orchestrator</span></div>
+        <h3 class="text-xl font-bold mb-2">팀장 · 병렬 실행 · 통합 리포트</h3>
+        <p class="text-slate-300 text-sm leading-relaxed">kr/us 병렬 호출 → fact-checker 릴레이 → 템플릿 주입으로 <code class="bg-white/10 px-1.5 py-0.5 rounded text-xs">reports/YYYY-MM-DD.md</code> 생성. 재시도·중복 제거 책임.</p>
+      </div>
+    </div>
+
+    <!-- Dataflow (Mermaid, module 07 architecture) -->
+    <div class="mermaid-card mb-14" id="capstoneFlowCard">
+      <div class="flex items-center gap-2 text-slate-300 text-xs mb-3"><i data-lucide="git-merge" class="w-4 h-4"></i> <code>news-multiagent/</code> 데이터 흐름 (모듈 07 아키텍처)</div>
+<pre class="mermaid">
+flowchart LR
+  user([사용자<br/>키워드]):::user --> inp[_workspace/input.md]:::file
+  inp --> orch{{orchestrator<br/>팀장}}:::orch
+  orch -->|병렬| kr[kr-news-agent<br/>한국어 뉴스]:::agent
+  orch -->|병렬| us[us-news-agent<br/>영어 뉴스]:::agent
+  kr --> krj[_workspace/kr.json]:::file
+  us --> usj[_workspace/us.json]:::file
+  krj --> fc[fact-checker<br/>교차검증]:::agent
+  usj --> fc
+  fc --> facts[_workspace/facts.md]:::file
+  facts --> orch2{{orchestrator<br/>리포트 합성}}:::orch
+  krj --> orch2
+  usj --> orch2
+  orch2 --> report([reports/YYYY-MM-DD.md<br/>최종 리포트]):::file
+  classDef user fill:#3b82f6,stroke:#1e40af,color:#fff
+  classDef orch fill:#dc2626,stroke:#7f1d1d,color:#fff
+  classDef agent fill:#16a34a,stroke:#166534,color:#fff
+  classDef file fill:#f59e0b,stroke:#b45309,color:#0f172a
+</pre>
+      <p class="text-xs text-center text-slate-400 mt-3">병렬 수집(kr/us) → 팩트체크 합류 → orchestrator 재호출로 최종 리포트 합성. 모든 중간 산출물은 <code>_workspace/</code>에 파일로 저장.</p>
+    </div>
+
+    <!-- Report template -->
+    <div class="rounded-[2rem] bg-[#0b1220] border border-white/10 p-6 mb-8">
+      <div class="flex items-center gap-2 text-slate-400 text-xs mb-3"><i data-lucide="file-text" class="w-4 h-4"></i> 통합 리포트 템플릿 <code class="ml-1">reports/YYYY-MM-DD.md</code></div>
+<pre class="text-sm text-slate-200 leading-relaxed overflow-x-auto"><code># {키워드} — {YYYY-MM-DD} 브리프
+
+## 헤드라인
+- KR: ...
+- US: ...
+
+## 한·미 비교
+| 항목 | KR | US |
+|------|----|----|
+| 주요 수치 |  |  |
+| 핵심 인용 |  |  |
+
+## 팩트체크 노트
+- ✅ 확인됨: ...
+- ⚠️ 검증 경고: 불일치 항목 자동 기록
+
+## 참고 URL
+- kr: ...
+- us: ...
+</code></pre>
+    </div>
+
+    <p class="text-xs text-slate-500">※ 실습에서는 orchestrator가 kr.json · us.json · facts.md를 읽어 위 템플릿을 채웁니다. <code>검증 경고</code> 섹션은 fact-checker 산출물에 mismatched 항목이 있을 때만 생성됩니다.</p>
+  </div>
+</section>
+
+<!-- Advanced challenges C1~C3 -->
+<section id="advanced" class="py-24 px-6 md:px-12 lg:px-24 bg-white text-slate-900">
+  <div class="max-w-6xl mx-auto">
+    <span class="section-label mb-4"><i data-lucide="rocket" class="w-3.5 h-3.5"></i> 심화 과제 (아이디어)</span>
+    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-3">수업이 끝난 뒤, 여기서부터</h2>
+    <p class="text-slate-600 mb-10 max-w-3xl">C1~C3은 "수업에선 다루지 않지만 혼자 확장해볼" 방향입니다. 캡스톤 B를 완성한 뒤 응용해 보세요.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="rounded-[2rem] p-7 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100">
+        <div class="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2">C1</div>
+        <h3 class="text-xl font-bold mb-2">일본 뉴스 Agent 추가</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">jp-news-agent를 병렬 라인에 붙여 3개국 비교 표로 확장. orchestrator의 fan-out 리스트에 한 줄 추가하면 됩니다.</p>
+      </div>
+      <div class="rounded-[2rem] p-7 bg-gradient-to-br from-emerald-50 to-blue-50 border border-emerald-100">
+        <div class="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-2">C2</div>
+        <h3 class="text-xl font-bold mb-2">Playwright로 원문 URL 검증</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">fact-checker 단계에서 실제 페이지를 헤드리스로 열어 타이틀·본문 존재 여부 확인. MCP의 playwright 서버를 사용합니다.</p>
+      </div>
+      <div class="rounded-[2rem] p-7 bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-100">
+        <div class="text-xs font-bold text-indigo-700 uppercase tracking-wider mb-2">C3</div>
+        <h3 class="text-xl font-bold mb-2">Slack 웹훅으로 리포트 배달</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">orchestrator 종료 훅에 incoming webhook POST를 추가. 매일 오전 9시 채널에 자동 발송되는 뉴스 브리프가 완성됩니다.</p>
+      </div>
+    </div>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="curriculum.html#/modules/07-capstone-news" class="inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors">캡스톤 모듈로 <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+      <a href="resources.html" class="inline-flex items-center gap-2 border border-slate-300 text-slate-700 px-5 py-3 rounded-full font-semibold hover:bg-slate-50 transition-colors">자료·치트시트</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#0f172a] text-slate-400 py-12 px-6 md:px-12 lg:px-24 border-t border-white/5 text-sm">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-3">
+    <span>© 2026 Samsung SDS · Agentic AI 1회차 · 사내 교육용</span>
+    <span>문의: namho.cho@samsung.com</span>
+  </div>
+</footer>
+
+<!-- Mobile drawer -->
+<div id="sdsDrawer" class="drawer">
+  <div id="sdsDrawerBackdrop" class="drawer-backdrop"></div>
+  <div class="drawer-panel dark-scroll">
+    <button id="sdsDrawerClose" class="absolute top-3 right-3 text-white/70 hover:text-white p-2" aria-label="닫기"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <div class="text-white font-bold text-lg mb-4">SDS Agentic AI</div>
+    <nav class="flex flex-col gap-1 text-sm">
+      <a href="index.html" class="sidebar-item">홈</a>
+      <a href="curriculum.html" class="sidebar-item">커리큘럼</a>
+      <a href="practices.html" class="sidebar-item active">실습</a>
+      <a href="resources.html" class="sidebar-item">자료</a>
+    </nav>
+  </div>
+</div>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script src="assets/app.js" defer></script>
+</body>
+</html>

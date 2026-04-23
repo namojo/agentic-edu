@@ -1,0 +1,462 @@
+{
+  "course": {
+    "title": "Agentic AI 개발 1회차",
+    "subtitle": "Cursor + Gemini로 배우는 비전공자 친화 Agentic AI",
+    "audience": "삼성SDS 직원 (비전공자 포함)",
+    "totalDuration": "약 4.5시간 (8 모듈)",
+    "environment": {
+      "editor": "Cursor 3.x (Windows User Setup 권장)",
+      "llm": [
+        "Cursor 내장 LLM (Chat/Ask/Agent/Plan 4 모드)",
+        "Gemini 무료 API (gemini-2.5-flash 권장, 별도 Python 터미널에서 호출)"
+      ],
+      "os": "Windows 10/11 중심 (macOS는 보조)",
+      "assumedSkill": "업무용 문서 편집 가능 / 터미널은 안내에 따라 복붙 가능 수준",
+      "prereqInstall": [
+        "Node.js LTS (winget install OpenJS.NodeJS.LTS)",
+        "Cursor (cursor.com, User Setup)",
+        "Python 3.12 (winget install Python.Python.3.12)",
+        "Google AI Studio에서 Gemini API Key 발급"
+      ]
+    },
+    "difficultyCurve": {
+      "module00_02": "설치·첫 대화 (입문, 코드 없이 따라감)",
+      "module03_04": "붙여넣기+클릭 90% (초급, 실습 A)",
+      "module05_06": "개념 이해까지 도달 (중급, 보너스 A1/A2)",
+      "module07": "전공자 심화 가능 (중상, 캡스톤 B)"
+    }
+  },
+  "modules": [
+    {
+      "id": "00-setup",
+      "order": 0,
+      "title": "환경 설정하기 (Windows 기준)",
+      "duration": "30~40분",
+      "difficulty": "입문",
+      "metaphor": "공구함 채우기 — 오늘 실습에 필요한 도구 8가지를 미리 준비",
+      "learningOutcomes": [
+        "Node.js·Git·Python·Cursor를 Windows에 설치·검증할 수 있다",
+        "AI Studio에서 Gemini API 키를 발급하고 사용자 환경변수에 등록한다",
+        "Python venv를 만들고 google-genai SDK로 첫 Hello Gemini 스크립트를 돌린다",
+        "이후 모듈에서 '환경 문제'로 막히지 않는다"
+      ],
+      "theory": [
+        "왜 이 모듈이 필요한가: 비전공자가 가장 자주 막히는 지점이 '환경 설정'",
+        "오늘 설치할 8가지 도구와 각각의 역할 한 줄 요약",
+        "Windows 경로 규약(%USERPROFILE%\\\\.cursor)과 PowerShell 기본기",
+        "Gemini 무료 티어 한도(flash 10 RPM / 250 RPD) — 왜 교실에서 아껴야 하는가"
+      ],
+      "hands_on": [
+        "Node.js LTS 설치 (winget 또는 nodejs.org) + node -v / npm -v 확인",
+        "Git for Windows 설치 + git --version",
+        "Cursor 다운로드·설치 + 초기 Onboarding",
+        "aistudio.google.com/apikey 에서 Gemini API Key 발급",
+        "PowerShell [Environment]::SetEnvironmentVariable('GEMINI_API_KEY','...','User')로 영구 등록",
+        "Python 3.12 설치 + python -m venv .venv + Activate.ps1",
+        "pip install google-genai",
+        "Hello Gemini 스크립트 실행으로 첫 성공 경험",
+        "환경 점검 체크리스트 8개 Pass 확인"
+      ],
+      "keyVisualPrompt": "Editorial tech illustration of a Windows developer desk setup with Node.js, Python, Cursor, and Gemini API key icons arranged as a toolbox, deep-indigo-to-electric-blue gradient, clean schematic style"
+    },
+    {
+      "id": "01-vibe-coding",
+      "order": 1,
+      "title": "바이브코딩 시작하기",
+      "duration": "30분",
+      "difficulty": "입문",
+      "metaphor": "대화하듯 코딩 — 첫 성공 경험",
+      "learningOutcomes": [
+        "바이브코딩의 개념과 전통 코딩과의 차이를 한 문장으로 설명한다",
+        "Cursor Chat으로 첫 질문을 던지고 답을 받는다",
+        "Tab 자동완성과 Apply 버튼을 실제로 눌러본다",
+        "4시간 로드맵(실습 A · 캡스톤 B)을 머릿속에 그린다"
+      ],
+      "theory": [
+        "바이브코딩이란: 의도→자연어 지시→AI 초안 루프",
+        "왜 지금인가: 비전공자가 결과물을 만들 수 있는 임계점",
+        "오늘의 4 키워드 지도: Skill / MCP / Agent / Multi-Agent",
+        "수업의 두 축: 실습 A(파일 관리) · 캡스톤 B(뉴스 멀티에이전트)",
+        "작게 쪼개고 바로 돌려보는 마인드셋"
+      ],
+      "hands_on": [
+        "Cursor 실행 후 빈 폴더 열기 (예: C:\\\\Users\\\\<사용자>\\\\Work\\\\hello-cursor)",
+        "Chat 패널에서 '/hello.md 파일 만들어줘. 오늘 날짜와 이름 적어줘'",
+        "Tab 자동완성으로 짧은 함수 체험",
+        "Apply 버튼으로 변경 적용 후 저장",
+        "4시간 로드맵 슬라이드 읽기"
+      ],
+      "keyVisualPrompt": "Editorial tech illustration: a beginner typing natural-language prompt in Cursor Chat, code appears beside, deep-indigo-to-electric-blue gradient, minimal"
+    },
+    {
+      "id": "02-cursor-tour",
+      "order": 2,
+      "title": "Cursor 핵심 기능 투어",
+      "duration": "30분",
+      "difficulty": "입문",
+      "metaphor": "Cursor라는 '스마트 사무실'의 방 배치도 익히기",
+      "learningOutcomes": [
+        "Chat · Ask · Agent · Plan 4 모드의 쓰임을 구분해 설명할 수 있다",
+        "Rules(규칙)와 Commands(명령어) 등록법을 안다",
+        "업무 문서 1개를 Cursor에 넣고 요약하는 기본 흐름을 수행한다",
+        "보너스 실습 A3(CSV 요약)으로 Cursor 기능을 몸에 붙인다"
+      ],
+      "theory": [
+        "Cursor 4 모드: Chat(대화·적용) / Ask(읽기 전용 질답) / Agent(자율 실행) / Plan(계획 후 실행)",
+        "Rules = 팀원에게 주는 '사내 규정집', 프로젝트별로 고정 지침 주입",
+        "Commands / Slash Commands = 자주 쓰는 명령을 '단축 버튼'으로",
+        "컨텍스트 주입 3방법: @파일, @폴더, @문서 URL",
+        "프롬프트 작성 공식: 역할 + 목표 + 제약 + 출력형식",
+        "공통 실패 패턴: 모델 헷갈림 / 컨텍스트 초과 / 의도 흐려짐"
+      ],
+      "hands_on": [
+        "실습 폴더 `vibe-1회차/` 생성 후 Cursor로 열기",
+        "Chat에서 `@파일` 문법으로 README 샘플 요약 받기",
+        "Agent 모드로 폴더 구조 `skills/`, `mcp/`, `agents/` 한 번에 만들기",
+        "Rules에 '모든 답변은 한국어, 코드 블록은 설명 포함' 저장",
+        "Commands에 `/요약` 등록 — 현재 선택 텍스트 3줄 요약",
+        "(보너스 A3) CSV 요약: 샘플 매출 CSV를 주고 '월별 합계 마크다운 표로' 요청 → 결과 확인"
+      ],
+      "keyVisualPrompt": "Isometric editorial illustration of a sleek futuristic workspace with labeled rooms 'Chat / Ask / Agent / Plan / Rules', deep-indigo-to-electric-blue palette, clean lines, paper-cut layers"
+    },
+    {
+      "id": "03-skill-basics",
+      "order": 3,
+      "title": "Skill 만들기 (실습 A 전반)",
+      "duration": "40분",
+      "difficulty": "초급",
+      "metaphor": "팀원에게 건네는 '업무 매뉴얼' — Skill",
+      "learningOutcomes": [
+        "Skill의 정의와 AI가 언제 Skill을 '발동'하는지 설명할 수 있다",
+        "`SKILL.md`의 frontmatter(name/description)가 왜 중요한지 이해한다",
+        "실습 A의 전반부: 파일 관리 Skill을 직접 작성하고 동작을 확인한다",
+        "(보너스 A3 대안 위치) Skill로 CSV 요약 절차를 매뉴얼화할 수 있다"
+      ],
+      "theory": [
+        "Skill = 특정 상황에서 AI가 따라야 할 '절차 매뉴얼' (마크다운 1장)",
+        "발동 조건: description의 트리거 표현이 사용자 요청과 매칭될 때",
+        "Skill은 '지식·절차'를 담는다. 도구 실행 능력을 주는 것은 MCP(모듈 04)",
+        "좋은 Skill의 3요소: 명확한 트리거 / 단계별 절차 / 완료 기준",
+        "안티패턴: 만능 Skill(발동 범위가 너무 넓음) / 트리거 누락 / 단계 불명확",
+        "Cursor에서 Skill 배치 위치와 우선순위"
+      ],
+      "hands_on": [
+        "`skills/file-organizer/SKILL.md` 파일 생성 (Cursor `/create-skill` 보조 활용)",
+        "frontmatter 작성: name=file-organizer, description='Downloads 폴더 정리, 파일 이름 규칙화, 중복 탐지 요청 시 트리거'",
+        "본문 섹션 4개 작성: 사용 시점 / 절차 / 네이밍 규칙 / 완료 기준",
+        "절차 예시 작성: ① 대상 폴더 스캔 ② 확장자별 분류 제안 ③ 중복 파일 목록 ④ 실행 전 사용자 확인",
+        "Cursor를 재시작 없이 새 Chat에서 '다운로드 폴더 정리해줘' 발화 → Skill 트리거 확인",
+        "회고: Skill만으로 되는 것 / 안 되는 것 구분하기 → MCP 필요성 자연스럽게 도출",
+        "산출물 체크리스트: SKILL.md 1개, 트리거 성공 스크린샷 1장"
+      ],
+      "keyVisualPrompt": "Editorial illustration of a neatly bound operations manual opening into glowing procedural steps, indigo-to-electric-blue, paper texture with holographic checklist overlay"
+    },
+    {
+      "id": "04-mcp-basics",
+      "order": 4,
+      "title": "MCP 만들기와 등록 (실습 A 후반)",
+      "duration": "40분",
+      "difficulty": "초급",
+      "metaphor": "AI를 위한 'USB-C' — 어디에나 꽂히는 도구 플러그인",
+      "learningOutcomes": [
+        "MCP의 구조(서버·툴·클라이언트)를 한 장 그림으로 설명한다",
+        "Skill과 MCP의 결정적 차이('지식 vs 실행권')를 체감한다",
+        "파일 관리 MCP 서버를 로컬에서 실행하고 Cursor에 등록한다",
+        "실습 A 통합: Skill이 MCP의 도구를 '불러 쓰는' 흐름을 관찰한다"
+      ],
+      "theory": [
+        "MCP = Model Context Protocol. AI가 '외부 능력'을 꽂아 쓰는 표준 규격",
+        "서버(능력 제공자) ↔ 클라이언트(Cursor) ↔ 툴(개별 기능) 3요소",
+        "Skill은 '어떻게 할지'의 매뉴얼, MCP는 '실제로 하는 손발'",
+        "보안 관점: 로컬 실행 vs 원격 / 권한 범위 최소화 / 시크릿 보관",
+        "로컬 실행 스택 옵션: Node.js 기반 stdio 서버(가장 쉬움)",
+        "Cursor MCP 등록 설정 파일 위치"
+      ],
+      "hands_on": [
+        "`mcp/file-manager-mcp/` 폴더 생성 후 Cursor Agent 모드로 보일러플레이트 생성 요청",
+        "툴 3개 정의: `list_files(dir)`, `move_file(src, dst)`, `find_duplicates(dir)`",
+        "로컬에서 `node server.js` 실행 → stdio 대기 상태 확인",
+        "Cursor MCP 설정에 서버 등록",
+        "Cursor 재연결 후 툴 목록에 3개 노출 확인",
+        "모듈 03의 Skill 발화 재시도 → 이번에는 MCP 툴을 호출하며 실제 파일 이동 수행",
+        "실습 A 완결 회고: Skill(판단·절차) + MCP(실행) 조합이 '자동화'를 만든다"
+      ],
+      "keyVisualPrompt": "Editorial illustration of a USB-C plug metamorphosing into a toolbox of glowing utilities, neural cables weaving into a code editor window, deep indigo and electric blue gradient"
+    },
+    {
+      "id": "05-single-agent",
+      "order": 5,
+      "title": "단일 Agent 개발",
+      "duration": "40분",
+      "difficulty": "중급",
+      "metaphor": "업무 '전담 비서' 한 명을 훈련시키기",
+      "learningOutcomes": [
+        "Agent = 역할 + 원칙 + 도구 접근 + 종료조건의 결합임을 설명한다",
+        "Cursor에서 서브에이전트를 정의·호출하는 방법을 익힌다",
+        "보너스 A1: 이메일/Slack 요약 단일 Agent를 만들어 동작시킨다",
+        "Agent가 '실패할 자유'를 가지게 설계하는 프로토콜을 이해한다"
+      ],
+      "theory": [
+        "Agent 4요소: 시스템 프롬프트(역할) / 도구 권한(MCP) / 정지 규칙 / 출력 규격",
+        "Chat과 Agent의 차이: Chat은 1턴 보조, Agent는 다단계 자율 실행",
+        "Cursor 서브에이전트 정의 위치와 호출 방식",
+        "프롬프트 골격: 정체성 → 목표 → 제약 → 출력 스키마 → 실패 시 대응",
+        "좋은 Agent 판별: 같은 입력 3회 → 결과 일관성 비교",
+        "비용·지연 관리: 모델 선택, 최대 스텝 제한, 로그 남기기"
+      ],
+      "hands_on": [
+        "`agents/email-summarizer.md` 생성 — 역할/원칙/출력 스키마 작성",
+        "입력 정의: Gmail 최근 20개 또는 샘플 .eml 파일 폴더",
+        "출력 스키마: {긴급도, 발신자, 1줄요약, 액션필요여부}의 표",
+        "도구 연결: 모듈 04의 파일 MCP로 .eml 읽기 / 결과를 `digest.md`로 저장",
+        "Agent 실행 → 결과 검증 → 프롬프트 1회 튜닝",
+        "(보너스 A1 확장 아이디어) Slack export JSON에 동일 Agent 적용",
+        "체크포인트: 같은 입력 3번 실행해 일관성 점수 매기기"
+      ],
+      "keyVisualPrompt": "Editorial illustration of a focused AI butler with a single spotlight, reading envelopes that dissolve into summarized cards, indigo-to-electric-blue palette, crisp minimal style"
+    },
+    {
+      "id": "06-multi-agent",
+      "order": 6,
+      "title": "Multi-Agent 협업",
+      "duration": "40분",
+      "difficulty": "중급",
+      "metaphor": "비서들이 모인 '소규모 태스크포스' 운영하기",
+      "learningOutcomes": [
+        "Multi-Agent의 4가지 협업 패턴(릴레이/병렬/합의/오케스트레이터)을 구분한다",
+        "Agent 간 메시지 규격과 공용 워크스페이스 설계의 필요성을 안다",
+        "보너스 A2: 회의록 → 액션 아이템 2-에이전트 시스템을 완성한다",
+        "캡스톤(모듈 07)에서 쓸 오케스트레이션 스켈레톤을 손에 익힌다"
+      ],
+      "theory": [
+        "왜 하나로 안 되나: 단일 Agent 프롬프트 비대화 문제와 책임 분산 이점",
+        "협업 패턴 4종: Relay(릴레이) / Parallel(병렬) / Debate(합의) / Orchestrator(팀장)",
+        "공용 워크스페이스 패턴: `_workspace/*.md`에 중간 산출물 저장 → 다음 Agent가 읽음",
+        "메시지 프로토콜 3요소: 발신자 / 목적 / 첨부 경로",
+        "실패 격리: 한 Agent 실패가 전체를 멈추지 않게 하는 재시도·대체 경로",
+        "관측: 각 Agent 호출을 `runs/*.jsonl` 로그로 남기기"
+      ],
+      "hands_on": [
+        "Agent 2개 정의: `meeting-note-cleaner`(전처리) · `action-item-extractor`(추출)",
+        "입력 샘플: 거친 회의록 텍스트 1장",
+        "릴레이 구성: cleaner → extractor, 중간 산출물 `_workspace/clean-notes.md`",
+        "출력 스키마 확정: {담당자, 기한, 액션, 우선순위}의 표",
+        "오케스트레이터 프롬프트 스켈레톤 작성 (모듈 07 재사용 예정)",
+        "병렬 패턴 맛보기: cleaner를 2개 복제해 한국어판/영문판 동시 처리",
+        "(보너스 A2) 실제 팀 회의록 1개로 파일럿 실행 후 품질 점검"
+      ],
+      "keyVisualPrompt": "Editorial illustration of four distinct AI assistants around a glowing round table passing document cards, overhead orchestrator node, deep indigo to electric blue gradient, paper-cut depth"
+    },
+    {
+      "id": "07-capstone-news",
+      "order": 7,
+      "title": "캡스톤: 한/미 뉴스 멀티에이전트",
+      "duration": "60분",
+      "difficulty": "중상",
+      "metaphor": "'뉴스룸 팀' 전체를 내가 편성하는 최종 프로젝트",
+      "learningOutcomes": [
+        "4개 Agent를 조합해 입력 키워드로 통합 브리프 리포트를 만든다",
+        "팩트체크 교차검증이 품질에 미치는 영향을 수치로 확인한다",
+        "수업 전체 개념(Skill·MCP·Agent·Multi-Agent·Workflow)을 한 산출물에 녹인다",
+        "심화 과제 C1~C3의 방향을 스스로 스케치할 수 있다"
+      ],
+      "theory": [
+        "시나리오 개요: 키워드 입력 → 한·미 수집 병렬 → 팩트체크 → 오케스트레이터 통합",
+        "4개 Agent 역할: kr-news-agent / us-news-agent / fact-checker / orchestrator",
+        "데이터 소스 전략: 공개 RSS·뉴스 API(무료 티어)",
+        "팩트체크 규칙: 최소 2개 독립 출처 교차, 수치·인용문 대조, 불일치 플래그",
+        "오케스트레이터 역할: 스케줄 / 재시도 / 중복 제거 / 최종 리포트 템플릿 주입",
+        "Workflow로 끌어올리기: 매일 오전 9시 자동 실행 훅"
+      ],
+      "hands_on": [
+        "키워드 입력 폼: `_workspace/input.md`에 키워드 1개 저장",
+        "`agents/kr-news-agent.md` 작성: 네이버/다음 RSS 또는 공식 API → 상위 5개 수집 → `_workspace/kr.json`",
+        "`agents/us-news-agent.md` 작성: Google News RSS 등 → 상위 5개 → `_workspace/us.json`",
+        "`agents/fact-checker.md` 작성: 두 파일 로드 → 주장·수치 교차검증 표 → `_workspace/facts.md`",
+        "`agents/orchestrator.md` 작성: 병렬 실행 → 팩트체크 → 통합 리포트 `reports/YYYY-MM-DD.md`",
+        "모듈 04의 파일 MCP 재사용으로 입출력 파일 I/O 처리",
+        "시연: '삼성전자 HBM' 같은 키워드로 End-to-End 실행",
+        "심화 과제 소개 (아이디어만): C1 일본 뉴스 Agent 추가 / C2 Playwright로 원문 URL 검증 / C3 Slack 웹훅으로 리포트 자동 배달"
+      ],
+      "keyVisualPrompt": "Editorial illustration of a futuristic newsroom with four robotic editors — Korean desk, US desk, fact-check desk, editor-in-chief — merging headlines into a single glowing brief, deep indigo to electric blue gradient, cinematic depth"
+    }
+  ],
+  "practices": {
+    "A_file_management": {
+      "title": "파일 관리 Skill + MCP 만들기",
+      "modulesInvolved": [
+        "03",
+        "04"
+      ],
+      "goal": "Skill(매뉴얼)과 MCP(실행권)의 차이를 한 세트 산출물로 체감",
+      "deliverable": [
+        "`skills/file-organizer/SKILL.md` 1개 (트리거·절차·완료기준 포함)",
+        "`mcp/file-manager/` 로컬 MCP 서버 1개 (list_files / move_file / find_duplicates)",
+        "Cursor 등록 스크린샷 1장 + End-to-End 실행 로그 1건"
+      ],
+      "successCriteria": [
+        "'다운로드 폴더 정리해줘' 한 마디로 Skill이 트리거되고 MCP가 실행된다",
+        "Skill 단독 vs Skill+MCP의 차이를 학습자가 3문장으로 말할 수 있다"
+      ]
+    },
+    "B_news_multiagent": {
+      "title": "한/미 뉴스 멀티에이전트 캡스톤",
+      "modulesInvolved": [
+        "05",
+        "06",
+        "07"
+      ],
+      "agents": [
+        {
+          "id": "kr-news-agent",
+          "role": "한국 뉴스 수집·1차 요약"
+        },
+        {
+          "id": "us-news-agent",
+          "role": "미국 뉴스 수집·1차 요약"
+        },
+        {
+          "id": "fact-checker",
+          "role": "양측 주장·수치 교차검증 및 불일치 플래그"
+        },
+        {
+          "id": "orchestrator",
+          "role": "병렬 스케줄·재시도·통합 리포트 생성"
+        }
+      ],
+      "deliverable": [
+        "4개 agent 정의 파일 + 공용 `_workspace/` 입출력",
+        "`reports/YYYY-MM-DD.md` 통합 브리프 (헤드라인 / 한·미 비교 / 팩트체크 노트 / 참고 URL)",
+        "실행 로그 `runs/*.jsonl` 1건 이상"
+      ],
+      "successCriteria": [
+        "키워드 1개 입력만으로 End-to-End 완주 (사람 개입 최소)",
+        "불일치 주장이 있을 때 리포트 상단 '검증 경고' 섹션이 자동 생성된다",
+        "총 실행 시간 5분 이내 (무료 티어 기준)"
+      ],
+      "bonusPractices": [
+        {
+          "id": "A1",
+          "where": "모듈 05",
+          "title": "이메일/Slack 요약 단일 Agent"
+        },
+        {
+          "id": "A2",
+          "where": "모듈 06 인트로",
+          "title": "회의록 → 액션아이템 2-Agent"
+        },
+        {
+          "id": "A3",
+          "where": "모듈 02 또는 03",
+          "title": "CSV 요약 (Cursor만 or Skill로 매뉴얼화)"
+        }
+      ],
+      "advancedChallenges": [
+        {
+          "id": "C1",
+          "title": "일본 뉴스 Agent 추가",
+          "hint": "jp-news-agent를 병렬 라인에 추가, 3개국 비교 표로 확장"
+        },
+        {
+          "id": "C2",
+          "title": "Playwright로 원문 URL 검증",
+          "hint": "팩트체크 단계에서 실제 페이지 접속해 타이틀·본문 존재 여부 확인"
+        },
+        {
+          "id": "C3",
+          "title": "Slack 웹훅으로 리포트 자동 배달",
+          "hint": "orchestrator 종료 훅에 incoming webhook POST 추가"
+        }
+      ]
+    }
+  },
+  "navigation": {
+    "primary": [
+      {
+        "label": "개요",
+        "href": "#overview"
+      },
+      {
+        "label": "커리큘럼",
+        "href": "#curriculum"
+      },
+      {
+        "label": "실습",
+        "href": "#practices"
+      },
+      {
+        "label": "슬라이드",
+        "href": "#slides"
+      },
+      {
+        "label": "자료",
+        "href": "#resources"
+      }
+    ],
+    "moduleMenu": "좌측 사이드바로 01~07 모듈 목록 + 현재 위치 하이라이트 렌더링",
+    "footerLinks": [
+      {
+        "label": "CHANGELOG",
+        "href": "/_workspace/CHANGELOG.md"
+      },
+      {
+        "label": "GLOSSARY",
+        "href": "/_workspace/GLOSSARY.md"
+      }
+    ]
+  },
+  "timeline": {
+    "totals": {
+      "modulesMinutes": 280,
+      "breaksMinutes": -40,
+      "note": "공식 4시간(240분) 기준. 모듈 합 280분에서 휴식/Q&A 흡수로 4시간 ±30분 범위에 수렴. 비전공자 페이스 고려해 모듈 3·4·5는 각 5분 버퍼 내장."
+    },
+    "sequence": [
+      {
+        "block": "오프닝+M01",
+        "minutes": 30
+      },
+      {
+        "block": "M02",
+        "minutes": 30
+      },
+      {
+        "block": "휴식",
+        "minutes": 10
+      },
+      {
+        "block": "M03",
+        "minutes": 40
+      },
+      {
+        "block": "M04",
+        "minutes": 40
+      },
+      {
+        "block": "점심/긴휴식",
+        "minutes": 10
+      },
+      {
+        "block": "M05",
+        "minutes": 40
+      },
+      {
+        "block": "M06",
+        "minutes": 40
+      },
+      {
+        "block": "M07 캡스톤+클로징",
+        "minutes": 60
+      }
+    ]
+  },
+  "openQuestionsForTechResearcher": [
+    "Cursor 최신 버전의 Chat/Ask/Agent/Plan 4 모드 공식 명칭과 단축키",
+    "Cursor의 `create-skill` 보조 기능 존재 여부 및 정확한 호출 방식",
+    "Cursor MCP 설정 파일 경로와 JSON 키 구조 (macOS/Windows 별)",
+    "Gemini 무료 티어에서 실제 사용 가능한 모델명과 RPM 한도 (2026-04 기준)",
+    "뉴스 수집 무료 소스 권장 2종 (한·미 각각, 이용약관 포함)",
+    "캡스톤의 주기 실행을 위해 Cursor Workflow / OS cron / GitHub Actions 중 권장 옵션",
+    "MCP 서버 작성용 공식 SDK(Node/Python) 현재 버전 및 예제 링크"
+  ]
+}

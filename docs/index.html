@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SDS Agentic AI 개발 1회차 | 비전공자도 만드는 Agentic AI</title>
+  <meta name="description" content="Cursor + Gemini 하이브리드(Plan C)로 배우는 삼성SDS 사내 교육. 4.5시간·8모듈(00 환경 설정 포함)·2실습·파일관리 MCP+Skill부터 한·미 뉴스 멀티에이전트 캡스톤까지." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>@import "https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css";</style>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="bg-white font-sans selection:bg-blue-500 selection:text-white">
+
+<!-- NAV -->
+<nav id="sdsNav" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+    <a href="index.html" class="flex items-center gap-2 text-white">
+      <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center shadow-lg"><i data-lucide="sparkles" class="w-5 h-5"></i></span>
+      <span class="font-black tracking-tight text-lg">SDS Agentic AI</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 font-medium text-sm text-white/90">
+      <a href="#overview" class="hover:text-blue-200 transition-colors">개요</a>
+      <a href="curriculum.html" class="hover:text-blue-200 transition-colors">커리큘럼</a>
+      <a href="practices.html" class="hover:text-blue-200 transition-colors">실습</a>
+      <a href="curriculum.html#/modules/00-setup" class="hover:text-blue-200 transition-colors">슬라이드</a>
+      <a href="resources.html" class="hover:text-blue-200 transition-colors">자료</a>
+    </div>
+    <div class="hidden md:flex items-center gap-4 text-white/80">
+      <div class="text-sm font-medium"><span class="text-white cursor-default">KO</span> <span class="opacity-40">|</span> <span class="opacity-60 cursor-default">EN</span></div>
+    </div>
+    <button id="sdsDrawerOpen" aria-label="메뉴 열기" class="md:hidden p-2 rounded-full text-white hover:bg-white/10">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="overview" class="relative min-h-screen pt-32 pb-24 px-6 md:px-12 lg:px-24 flex items-center overflow-hidden bg-blue-600">
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-900"></div>
+    <div class="orb" style="top:-20%;right:-10%;width:70%;height:70%;background:rgba(96,165,250,0.3);"></div>
+    <div class="orb" style="bottom:-20%;left:-10%;width:55%;height:55%;background:rgba(99,102,241,0.35);"></div>
+    <div class="absolute top-1/4 right-1/4 w-64 h-64 bg-blue-500/10 backdrop-blur-3xl rounded-3xl rotate-12 border border-white/10"></div>
+    <div class="absolute bottom-1/4 right-1/3 w-48 h-48 bg-indigo-500/10 backdrop-blur-3xl rounded-3xl -rotate-6 border border-white/10"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 relative z-10">
+    <div class="flex flex-col justify-center">
+      <span class="section-label-dark mb-6 w-fit"><span class="w-1.5 h-1.5 rounded-full bg-blue-300 animate-pulse"></span> SDS 사내 교육 · 2026 · 4.5시간 · 8모듈</span>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] mb-6 tracking-tight">
+        비전공자도 만든다<br/>
+        <span class="text-blue-200">Agentic AI 개발</span>
+      </h1>
+      <p class="text-lg md:text-xl text-blue-100/90 max-w-xl leading-relaxed mb-10">
+        Cursor 내장 LLM으로 대화하듯 코딩하고, Gemini 무료 API로 실제 에이전트를 돌려봅니다.
+        <strong class="text-white font-semibold">Plan C(하이브리드)</strong> 기반의 현장형 커리큘럼으로, 4시간 안에 파일 관리 MCP부터 한·미 뉴스 멀티에이전트까지.
+      </p>
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="curriculum.html" class="inline-flex items-center gap-2 bg-white text-blue-900 px-5 py-3 rounded-full font-bold hover:bg-blue-50 transition-colors shadow-xl">
+          커리큘럼 들어가기 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+        <a href="practices.html" class="inline-flex items-center gap-2 border border-white/30 text-white px-5 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors">
+          실습 A/B 미리 보기
+        </a>
+      </div>
+    </div>
+
+    <!-- 2x2 glass stat cards -->
+    <div class="grid grid-cols-2 gap-4 md:gap-5">
+      <div class="bg-blue-900/40 backdrop-blur-xl rounded-[2rem] p-6 text-white border border-white/10 shadow-2xl flex flex-col justify-between">
+        <div class="flex items-center gap-2 text-blue-200 text-sm font-medium"><i data-lucide="clock-4" class="w-5 h-5"></i>총 수업 시간</div>
+        <div>
+          <div class="text-5xl font-black tracking-tighter mt-4">4.5<span class="text-2xl align-top font-bold text-blue-200 ml-1">시간</span></div>
+          <div class="text-xs text-blue-200 mt-1">환경 설정 포함 · 휴식 여유</div>
+        </div>
+      </div>
+      <div class="bg-gradient-to-br from-cyan-500/90 to-blue-600/90 rounded-[2rem] p-6 text-white border border-white/20 shadow-2xl flex flex-col justify-between">
+        <div class="flex items-center gap-2 text-cyan-50 text-sm font-medium"><i data-lucide="layers-3" class="w-5 h-5"></i>모듈 구성</div>
+        <div>
+          <div class="text-5xl font-black tracking-tighter mt-4">8<span class="text-2xl align-top font-bold text-cyan-100 ml-1">모듈</span></div>
+          <div class="text-xs text-cyan-50/90 mt-1">준비 → 입문 → 중상 난이도 곡선</div>
+        </div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-xl rounded-[2rem] p-6 text-white border border-white/10 shadow-2xl flex flex-col justify-between">
+        <div class="flex items-center gap-2 text-blue-200 text-sm font-medium"><i data-lucide="wrench" class="w-5 h-5"></i>메인 실습</div>
+        <div>
+          <div class="text-5xl font-black tracking-tighter mt-4">2<span class="text-2xl align-top font-bold text-blue-200 ml-1">개</span></div>
+          <div class="text-xs text-blue-200 mt-1">A: 파일 MCP + Skill · B: 뉴스 멀티에이전트</div>
+        </div>
+      </div>
+      <div class="bg-white rounded-[2rem] p-6 text-slate-900 shadow-2xl flex flex-col justify-between">
+        <div class="flex items-center gap-2 text-slate-500 text-sm font-medium"><i data-lucide="monitor-smartphone" class="w-5 h-5"></i>대상 OS</div>
+        <div>
+          <div class="text-5xl font-black tracking-tighter mt-4 text-slate-900">Win<span class="text-2xl align-top font-bold text-slate-500 ml-1">중심</span></div>
+          <div class="text-xs text-emerald-600 mt-1 font-semibold inline-flex items-center gap-1"><i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>macOS 보조 · PowerShell 기본</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section class="bg-[#0f172a] text-white py-28 px-6 md:px-12 lg:px-24 relative overflow-hidden">
+  <div class="absolute -top-20 -right-10 w-96 h-96 rounded-full bg-blue-600/20 blur-[120px]"></div>
+  <div class="absolute bottom-0 left-10 w-80 h-80 rounded-full bg-indigo-500/15 blur-[120px]"></div>
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="max-w-3xl mb-14">
+      <span class="section-label-dark mb-5"><i data-lucide="zap" class="w-3.5 h-3.5"></i> Why Now</span>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-5">왜 지금 Agentic AI를<br/>직접 만들어야 하는가</h2>
+      <p class="text-slate-300 text-lg leading-relaxed">
+        "Skill · MCP · Agent · Multi-Agent" — 이 네 조각을 이해하는 순간, 업무 자동화는 더 이상 개발팀만의 영역이 아닙니다.
+        본 과정은 개념·실전·환경 세 축을 하루에 동시에 잡습니다.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="glass p-8 hover:border-white/20 transition-colors">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center mb-5"><i data-lucide="book-open-text" class="w-6 h-6 text-white"></i></div>
+        <h3 class="text-xl font-bold mb-3">개념: 4단 키워드 지도</h3>
+        <p class="text-slate-300 leading-relaxed text-[0.95rem]">
+          <strong class="text-white">Skill</strong>(매뉴얼) → <strong class="text-white">MCP</strong>(도구 플러그) →
+          <strong class="text-white">Agent</strong>(전담 비서) → <strong class="text-white">Multi-Agent</strong>(팀).
+          비유와 그림으로 한 장에 정리합니다.
+        </p>
+      </div>
+      <div class="glass p-8 hover:border-white/20 transition-colors">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center mb-5"><i data-lucide="workflow" class="w-6 h-6 text-white"></i></div>
+        <h3 class="text-xl font-bold mb-3">실전: 두 개의 산출물</h3>
+        <p class="text-slate-300 leading-relaxed text-[0.95rem]">
+          <strong class="text-white">실습 A</strong>는 "다운로드 폴더 정리해줘" 한 마디로 Skill + MCP가 돌아가는 경험.
+          <strong class="text-white">캡스톤 B</strong>는 키워드 하나로 4개 에이전트가 한·미 뉴스를 취합·검증하는 미니 뉴스룸입니다.
+        </p>
+      </div>
+      <div class="glass p-8 hover:border-white/20 transition-colors">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400 to-blue-600 flex items-center justify-center mb-5"><i data-lucide="shield-check" class="w-6 h-6 text-white"></i></div>
+        <h3 class="text-xl font-bold mb-3">환경: Plan C 하이브리드</h3>
+        <p class="text-slate-300 leading-relaxed text-[0.95rem]">
+          Cursor Free + 내장 LLM으로 IDE 경험을, Gemini 무료 API는 별도 터미널/Python으로 호출합니다.
+          <strong class="text-white">BYOK 가정 없음 · 라이선스 리스크 없음.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section id="curriculum" class="bg-gray-50 py-28 px-6 md:px-12 lg:px-24">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-3xl mb-14">
+      <span class="section-label mb-5"><i data-lucide="list-ordered" class="w-3.5 h-3.5"></i> 1회차 커리큘럼</span>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-5">4.5시간, 8개의 모듈<br/>환경 설정에서 캡스톤까지</h2>
+      <p class="text-slate-600 text-lg leading-relaxed">
+        모듈 00 "환경 설정(Windows)"으로 공구함을 먼저 채우고, 마지막 모듈에선 멀티에이전트 뉴스룸을 직접 배포합니다.
+        각 모듈은 이론 5 + 실습 5 ~ 10분으로 구성돼 진도가 밀리지 않습니다.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="moduleGrid"></div>
+  </div>
+</section>
+
+<!-- CAPSTONE PREVIEW -->
+<section id="capstone" class="bg-blue-600 text-white py-28 px-6 md:px-12 lg:px-24 overflow-hidden relative">
+  <div class="absolute inset-0 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-900 -z-0"></div>
+  <div class="orb" style="top:-20%;left:-10%;width:60%;height:60%;background:rgba(96,165,250,0.25);"></div>
+  <div class="orb" style="bottom:-30%;right:-10%;width:55%;height:55%;background:rgba(99,102,241,0.25);"></div>
+  <div class="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <span class="section-label-dark mb-5"><i data-lucide="newspaper" class="w-3.5 h-3.5"></i> 캡스톤 미리보기</span>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-5">키워드 한 개로<br/>뉴스룸을 돌린다</h2>
+      <p class="text-blue-100/90 text-lg leading-relaxed mb-6">
+        사용자가 "삼성전자 HBM" 같은 키워드를 던지면, 오케스트레이터가 한국·미국 뉴스 에이전트를
+        <strong class="text-white">병렬</strong>로 호출하고, 팩트체커가 수치·인용을 교차검증해
+        통합 브리프 리포트 <code class="bg-white/10 px-2 py-0.5 rounded text-sm">reports/YYYY-MM-DD.md</code>를 생성합니다.
+      </p>
+      <ul class="space-y-2 text-blue-100 mb-8">
+        <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-200 mt-0.5 shrink-0"></i><span>4개 Agent · 파일 MCP 재사용 · 공용 워크스페이스 패턴</span></li>
+        <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-200 mt-0.5 shrink-0"></i><span>End-to-End 5분 내 실행 (무료 티어 기준)</span></li>
+        <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-200 mt-0.5 shrink-0"></i><span>불일치 주장 자동 '검증 경고' 섹션</span></li>
+      </ul>
+      <a href="practices.html#capstone" class="inline-flex items-center gap-2 bg-white text-blue-900 px-5 py-3 rounded-full font-bold hover:bg-blue-50 transition-colors shadow-xl">
+        실습 B 상세 보기 <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+
+    <!-- SVG dataflow -->
+    <div class="data-flow-wrap">
+      <svg viewBox="0 0 460 340" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-label="뉴스 멀티에이전트 데이터 흐름도">
+        <defs>
+          <linearGradient id="nodeBlue" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#60a5fa"/>
+            <stop offset="100%" stop-color="#2563eb"/>
+          </linearGradient>
+          <linearGradient id="nodeIndigo" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#a5b4fc"/>
+            <stop offset="100%" stop-color="#6366f1"/>
+          </linearGradient>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0 0 L10 5 L0 10 Z" fill="rgba(255,255,255,0.7)"/>
+          </marker>
+        </defs>
+
+        <!-- User -->
+        <g>
+          <rect x="10" y="145" width="90" height="48" rx="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.4)"/>
+          <text x="55" y="170" fill="#fff" text-anchor="middle" font-size="12" font-weight="700">User</text>
+          <text x="55" y="185" fill="#cbd5e1" text-anchor="middle" font-size="10">키워드 입력</text>
+        </g>
+
+        <!-- Orchestrator -->
+        <g>
+          <rect x="145" y="140" width="120" height="58" rx="14" fill="url(#nodeIndigo)" stroke="rgba(255,255,255,0.3)"/>
+          <text x="205" y="165" fill="#fff" text-anchor="middle" font-size="12" font-weight="700">Orchestrator</text>
+          <text x="205" y="182" fill="#e0e7ff" text-anchor="middle" font-size="10">팀장 Agent</text>
+        </g>
+
+        <!-- KR agent -->
+        <g>
+          <rect x="290" y="60" width="130" height="54" rx="14" fill="url(#nodeBlue)" stroke="rgba(255,255,255,0.3)"/>
+          <text x="355" y="85" fill="#fff" text-anchor="middle" font-size="12" font-weight="700">kr-news-agent</text>
+          <text x="355" y="100" fill="#dbeafe" text-anchor="middle" font-size="10">한국 뉴스 수집</text>
+        </g>
+        <!-- US agent -->
+        <g>
+          <rect x="290" y="220" width="130" height="54" rx="14" fill="url(#nodeBlue)" stroke="rgba(255,255,255,0.3)"/>
+          <text x="355" y="245" fill="#fff" text-anchor="middle" font-size="12" font-weight="700">us-news-agent</text>
+          <text x="355" y="260" fill="#dbeafe" text-anchor="middle" font-size="10">미국 뉴스 수집</text>
+        </g>
+
+        <!-- Fact checker -->
+        <g>
+          <rect x="165" y="275" width="140" height="52" rx="14" fill="rgba(52,211,153,0.18)" stroke="rgba(110,231,183,0.6)"/>
+          <text x="235" y="298" fill="#d1fae5" text-anchor="middle" font-size="12" font-weight="700">fact-checker</text>
+          <text x="235" y="313" fill="#a7f3d0" text-anchor="middle" font-size="10">수치·인용 교차검증</text>
+        </g>
+
+        <!-- Final report -->
+        <g>
+          <rect x="10" y="275" width="115" height="52" rx="14" fill="#fff" stroke="rgba(255,255,255,0.4)"/>
+          <text x="67" y="298" fill="#1e3a8a" text-anchor="middle" font-size="12" font-weight="700">Final Report</text>
+          <text x="67" y="313" fill="#475569" text-anchor="middle" font-size="10">reports/YYYY-MM-DD</text>
+        </g>
+
+        <!-- Arrows -->
+        <g stroke="rgba(255,255,255,0.6)" stroke-width="1.5" fill="none" marker-end="url(#arrow)">
+          <path d="M100 169 L145 169"/>
+          <path d="M265 155 Q285 105 290 92"/>
+          <path d="M265 183 Q285 230 290 245"/>
+          <path d="M355 114 Q355 180 305 290"/>
+          <path d="M355 220 Q300 270 305 298"/>
+          <path d="M165 300 L125 300"/>
+        </g>
+      </svg>
+      <p class="text-xs text-center text-blue-100 mt-3">User → Orchestrator → (kr-news, us-news) → Fact Checker → Final Report</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICES & FAQ -->
+<section id="practices" class="bg-white py-28 px-6 md:px-12 lg:px-24">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-3xl mb-14">
+      <span class="section-label mb-5"><i data-lucide="terminal" class="w-3.5 h-3.5"></i> 실습 & FAQ</span>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-5">손으로 만들고,<br/>궁금증도 바로 해소</h2>
+      <p class="text-slate-600 text-lg leading-relaxed">실습 A는 Skill·MCP 분리 감각을, 캡스톤 B는 멀티 에이전트 협업 감각을 각각 책임집니다.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
+      <div class="rounded-[2rem] p-8 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 shadow-sm">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="num-badge" style="width:2.5rem;height:2.5rem;font-size:0.9rem;">A</span>
+          <h3 class="text-2xl font-bold text-slate-900">파일 관리 MCP + Skill</h3>
+        </div>
+        <p class="text-slate-600 mb-5 leading-relaxed">"다운로드 폴더 정리해줘" 한 마디 → Skill이 매뉴얼을 펴고, MCP가 실제 파일을 옮깁니다. 둘의 역할 분리를 한 세트로 체득.</p>
+        <ul class="space-y-2 text-sm text-slate-700">
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600 mt-0.5"></i>SKILL.md 1개 (트리거·절차·완료기준)</li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600 mt-0.5"></i>로컬 MCP 서버 1개 (list/move/find_duplicates)</li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600 mt-0.5"></i>Cursor 등록 스크린샷 + 실행 로그</li>
+        </ul>
+        <a href="practices.html#practice-a" class="inline-flex items-center gap-2 mt-6 text-blue-700 font-semibold text-sm hover:text-blue-900">실습 A 자세히 <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+      </div>
+
+      <div class="rounded-[2rem] p-8 bg-gradient-to-br from-slate-900 to-indigo-900 border border-slate-800 shadow-lg text-white">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="num-badge" style="width:2.5rem;height:2.5rem;font-size:0.9rem;background:linear-gradient(135deg,#a5b4fc,#6366f1);">B</span>
+          <h3 class="text-2xl font-bold">한/미 뉴스 멀티에이전트</h3>
+        </div>
+        <p class="text-blue-100 mb-5 leading-relaxed">4개 Agent + 파일 MCP 재사용. 키워드 1개 → 병렬 수집 → 팩트체크 → 통합 리포트. 본 과정의 캡스톤.</p>
+        <ul class="space-y-2 text-sm text-blue-100">
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-300 mt-0.5"></i>kr-news · us-news · fact-checker · orchestrator</li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-300 mt-0.5"></i>공용 `_workspace/*.md` 중간 산출물</li>
+          <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-300 mt-0.5"></i>'검증 경고' 섹션 자동 생성</li>
+        </ul>
+        <a href="practices.html#capstone" class="inline-flex items-center gap-2 mt-6 text-blue-200 font-semibold text-sm hover:text-white">캡스톤 B 자세히 <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <h3 class="text-2xl font-bold text-slate-900 mb-6">자주 묻는 질문</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="faqGrid">
+      <details class="faq"><summary>수강에 비용이 드나요?</summary><div class="faq-body">기본은 모두 무료입니다. Cursor Free 플랜과 Gemini 무료 API(gemini-2.5-flash 또는 flash-lite)로 전 과정을 완주할 수 있도록 설계됐습니다.</div></details>
+      <details class="faq"><summary>사전 지식이 필요한가요?</summary><div class="faq-body">업무용 문서 편집이 가능하고 터미널 명령어를 안내에 따라 복사·붙여넣기할 수 있으면 충분합니다. 코드 경험은 필요 없습니다.</div></details>
+      <details class="faq"><summary>얼마나 걸리나요?</summary><div class="faq-body">총 4시간(240분) 기준입니다. 모듈 합은 약 280분이며 휴식·Q&A 시간으로 흡수합니다. 모듈 03·04·05는 각 5분 버퍼가 내장돼 있습니다.</div></details>
+      <details class="faq"><summary>Cursor 무료 플랜으로 충분한가요?</summary><div class="faq-body">충분합니다. 다만 Free 플랜은 Auto 모드만 가능하고 Gemini BYOK로 모델을 직접 고를 수 없습니다. 그래서 Plan C(하이브리드) — Cursor 내장 LLM + 별도 터미널 Gemini 호출 — 로 진행합니다.</div></details>
+      <details class="faq"><summary>Gemini 한도가 부족하면?</summary><div class="faq-body">gemini-2.5-flash는 2026-04 기준 10 RPM / 250 RPD. 수업 인원 20명이 동시에 캡스톤을 돌리면 빠듯할 수 있어 flash-lite(15 RPM / 1000 RPD)로 전환하거나 더미 데이터 모드를 제공합니다.</div></details>
+      <details class="faq"><summary>실습을 못 따라가면 어떻게 하나요?</summary><div class="faq-body">각 모듈 말미에 "체크포인트"와 완성 상태의 공유 템플릿이 제공돼 중간부터 합류 가능합니다. 또한 실습 A·B는 독립적으로 구성돼, B만 해도 무방합니다.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#0f172a] text-slate-300 py-16 px-6 md:px-12 lg:px-24 border-t border-white/5">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-2 text-white mb-4">
+        <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center shadow-lg"><i data-lucide="sparkles" class="w-5 h-5"></i></span>
+        <span class="font-black tracking-tight text-lg">SDS Agentic AI</span>
+      </div>
+      <p class="text-sm leading-relaxed max-w-md">
+        삼성SDS 사내 교육 "Agentic AI 개발 1회차" (2026). 비전공자도 4시간 안에 Skill · MCP · Agent · Multi-Agent를 손으로 만들어 봅니다.
+      </p>
+    </div>
+    <div>
+      <h4 class="text-white font-semibold text-sm mb-3">페이지</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="index.html" class="hover:text-white">홈</a></li>
+        <li><a href="curriculum.html" class="hover:text-white">커리큘럼</a></li>
+        <li><a href="practices.html" class="hover:text-white">실습</a></li>
+        <li><a href="resources.html" class="hover:text-white">자료·치트시트</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-white font-semibold text-sm mb-3">외부 링크</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="https://cursor.com/docs" target="_blank" rel="noopener" class="hover:text-white">Cursor Docs</a></li>
+        <li><a href="https://modelcontextprotocol.io" target="_blank" rel="noopener" class="hover:text-white">MCP 공식 사이트</a></li>
+        <li><a href="https://ai.google.dev" target="_blank" rel="noopener" class="hover:text-white">Gemini AI</a></li>
+        <li><a href="https://cursor.directory" target="_blank" rel="noopener" class="hover:text-white">Cursor Directory</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto mt-10 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between gap-3 text-xs text-slate-500">
+    <span>© 2026 Samsung SDS · Agentic AI 1회차 · 사내 교육용</span>
+    <span>문의: namho.cho@samsung.com</span>
+  </div>
+</footer>
+
+<!-- Mobile drawer (landing version) -->
+<div id="sdsDrawer" class="drawer">
+  <div id="sdsDrawerBackdrop" class="drawer-backdrop"></div>
+  <div class="drawer-panel dark-scroll">
+    <button id="sdsDrawerClose" class="absolute top-3 right-3 text-white/70 hover:text-white p-2" aria-label="닫기"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <div class="text-white font-bold text-lg mb-4">SDS Agentic AI</div>
+    <nav class="flex flex-col gap-1 text-sm">
+      <a href="#overview" class="sidebar-item">개요</a>
+      <a href="curriculum.html" class="sidebar-item">커리큘럼</a>
+      <a href="practices.html" class="sidebar-item">실습</a>
+      <a href="resources.html" class="sidebar-item">자료</a>
+    </nav>
+  </div>
+</div>
+
+<!-- Icons + app -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="assets/app.js" defer></script>
+
+<!-- Render module grid inline (uses SDS_MODULES once app.js loads) -->
+<script>
+  // Lightweight module grid builder — runs after app.js registers SDS_MODULES
+  document.addEventListener('DOMContentLoaded', function () {
+    var grid = document.getElementById('moduleGrid');
+    if (!grid || !window.SDS_MODULES) return;
+    var descriptions = {
+      '00-setup':         'Windows에 Node.js·Git·Python·Cursor 설치 + Gemini API 키 발급·영구 등록. 첫 Hello Gemini 성공 경험.',
+      '01-vibe-coding':   '의도 → 자연어 → AI 초안 루프. Cursor Chat에서 첫 질문, Tab 자동완성·Apply 버튼 체험.',
+      '02-cursor-tour':   'Chat·Ask·Agent·Plan 4가지 모드와 Rules·Commands. @파일 컨텍스트 주입까지.',
+      '03-skill-basics':  'SKILL.md 프론트매터와 트리거. file-organizer Skill을 직접 작성하고 발동 확인.',
+      '04-mcp-basics':    'MCP 개념(Host·Client·Server). 공식 filesystem 서버를 mcp.json에 등록하고 호출.',
+      '05-single-agent':  'Agent 4요소(역할·도구·정지·스키마). 이메일/Slack 요약 단일 에이전트 제작.',
+      '06-multi-agent':   '릴레이·병렬·합의·오케스트레이터 4패턴. 회의록→액션아이템 2-에이전트 조립.',
+      '07-capstone-news': '한·미 뉴스 수집 병렬 + 팩트체크 + 오케스트레이터. 통합 브리프 자동 생성.'
+    };
+    grid.innerHTML = window.SDS_MODULES.map(function (m) {
+      var isPrep = (m.id === '00-setup');
+      var tagHTML = '<span class="diff-tag diff-' + m.difficulty + '">' + (isPrep ? '준비 단계' : m.difficulty) + '</span>';
+      var borderHighlight = isPrep ? ' bg-gradient-to-br from-slate-50 to-blue-50/60' : '';
+      return '' +
+        '<a href="curriculum.html#/modules/' + m.id + '" class="group rounded-[2rem] bg-white border border-slate-200 p-6 hover:border-blue-300 hover:shadow-lg transition-all flex flex-col' + borderHighlight + '">' +
+          '<div class="flex items-start justify-between mb-4">' +
+            '<span class="num-badge">' + String(m.order).padStart(2, '0') + '</span>' +
+            tagHTML +
+          '</div>' +
+          '<div class="text-xs font-medium text-slate-400 mb-1">Module ' + String(m.order).padStart(2, '0') + ' · ' + m.duration + '</div>' +
+          '<h3 class="text-xl font-bold tracking-tight text-slate-900 mb-2">' + m.title + '</h3>' +
+          '<p class="text-sm text-slate-600 leading-relaxed mb-4 flex-1">' + (descriptions[m.id] || '') + '</p>' +
+          '<span class="inline-flex items-center gap-1 text-sm font-semibold text-blue-700 group-hover:text-blue-900">이 모듈 보기 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></span>' +
+        '</a>';
+    }).join('');
+    if (window.lucide) window.lucide.createIcons();
+  });
+</script>
+</body>
+</html>

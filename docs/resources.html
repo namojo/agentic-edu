@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>자료 · 치트시트 · 용어집 | SDS Agentic AI 1회차</title>
+  <meta name="description" content="Cursor 치트시트, 공식 MCP 서버 카탈로그, Gemini 무료 티어 한도, 용어집, 심화 과제 아이디어, 공식 링크 모음." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>@import "https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css";</style>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans selection:bg-blue-500 selection:text-white">
+
+<!-- NAV -->
+<nav id="sdsNav" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-3 nav-scrolled">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+    <a href="index.html" class="flex items-center gap-2 text-white">
+      <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center shadow-lg"><i data-lucide="sparkles" class="w-5 h-5"></i></span>
+      <span class="font-black tracking-tight text-lg">SDS Agentic AI</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 font-medium text-sm text-white/80">
+      <a href="index.html#overview" class="hover:text-white">개요</a>
+      <a href="curriculum.html" class="hover:text-white">커리큘럼</a>
+      <a href="practices.html" class="hover:text-white">실습</a>
+      <a href="resources.html" class="text-blue-300">자료</a>
+    </div>
+    <button id="sdsDrawerOpen" aria-label="메뉴 열기" class="md:hidden p-2 rounded-full text-white hover:bg-white/10">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="pt-32 pb-14 px-6 md:px-12 lg:px-24 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-900 text-white relative overflow-hidden">
+  <div class="orb" style="top:-20%;right:-10%;width:50%;height:50%;background:rgba(99,102,241,0.25);"></div>
+  <div class="orb" style="bottom:-30%;left:-10%;width:50%;height:50%;background:rgba(96,165,250,0.25);"></div>
+  <div class="max-w-6xl mx-auto relative">
+    <span class="section-label-dark mb-5"><i data-lucide="library" class="w-3.5 h-3.5"></i> 자료실</span>
+    <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-3">치트시트 · 용어 · 공식 링크</h1>
+    <p class="text-blue-100/90 text-lg max-w-2xl leading-relaxed">수업 중·이후 참고할 모든 레퍼런스를 한 페이지에. 2026-04-23 기준 기술 팩트를 반영합니다.</p>
+  </div>
+</header>
+
+<!-- Quick TOC -->
+<section class="py-8 px-6 md:px-12 lg:px-24 bg-white border-b border-slate-200 sticky top-16 z-30">
+  <div class="max-w-6xl mx-auto flex flex-wrap gap-2 text-sm">
+    <a href="#cheatsheet" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-700 font-medium text-slate-700">Cursor 치트시트</a>
+    <a href="#mcp-catalog" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-700 font-medium text-slate-700">공식 MCP 서버 5종</a>
+    <a href="#gemini" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-700 font-medium text-slate-700">Gemini 무료 티어</a>
+    <a href="#glossary" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-700 font-medium text-slate-700">용어집</a>
+    <a href="#advanced" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-700 font-medium text-slate-700">심화 과제 C1~C3</a>
+    <a href="#links" class="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-700 font-medium text-slate-700">공식 링크</a>
+  </div>
+</section>
+
+<!-- Cursor cheatsheet -->
+<section id="cheatsheet" class="py-20 px-6 md:px-12 lg:px-24 bg-slate-50">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Cursor 치트시트</h2>
+    <p class="text-slate-600 max-w-3xl mb-8">Rules · Commands · Skills · Subagents · MCP — 각 기능의 "어디에 뭘 두느냐"를 한 표로. 2026-04-23 기준 cursor.com/docs 근거.</p>
+
+    <div class="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm">
+      <table class="w-full text-sm">
+        <thead class="bg-slate-100 text-slate-700">
+          <tr>
+            <th class="text-left px-4 py-3 font-semibold">기능</th>
+            <th class="text-left px-4 py-3 font-semibold">프로젝트 경로</th>
+            <th class="text-left px-4 py-3 font-semibold">전역(User) · <strong>Windows</strong></th>
+            <th class="text-left px-4 py-3 font-semibold">전역(User) · macOS (보조)</th>
+            <th class="text-left px-4 py-3 font-semibold">메모</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-200">
+          <tr>
+            <td class="px-4 py-3 font-semibold">Rules</td>
+            <td class="px-4 py-3"><code>.cursor\rules\*.mdc</code></td>
+            <td class="px-4 py-3"><code>%USERPROFILE%\.cursor\rules\</code></td>
+            <td class="px-4 py-3 text-slate-500"><code>~/.cursor/rules/</code></td>
+            <td class="px-4 py-3 text-slate-600">항상 프롬프트에 붙음. 구 "Rules for AI"는 레거시, 현 공식명은 "Rules".</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-semibold">Commands</td>
+            <td class="px-4 py-3"><code>.cursor\commands\</code></td>
+            <td class="px-4 py-3"><code>%USERPROFILE%\.cursor\commands\</code></td>
+            <td class="px-4 py-3 text-slate-500"><code>~/.cursor/commands/</code></td>
+            <td class="px-4 py-3 text-slate-600">Cursor 3.x부터 Skills로 흡수 추세. <code>/migrate-to-skills</code> 제공.</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-semibold">Skills</td>
+            <td class="px-4 py-3"><code>.cursor\skills\&lt;name&gt;\SKILL.md</code></td>
+            <td class="px-4 py-3"><code>%USERPROFILE%\.cursor\skills\&lt;name&gt;\SKILL.md</code></td>
+            <td class="px-4 py-3 text-slate-500"><code>~/.cursor/skills/&lt;name&gt;/SKILL.md</code></td>
+            <td class="px-4 py-3 text-slate-600">frontmatter의 <code>description</code>이 트리거. 자동 로드 또는 <code>/skill-name</code>.</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-semibold">Subagents</td>
+            <td class="px-4 py-3"><code>.cursor\agents\&lt;name&gt;.md</code></td>
+            <td class="px-4 py-3"><code>%USERPROFILE%\.cursor\agents\&lt;name&gt;.md</code></td>
+            <td class="px-4 py-3 text-slate-500"><code>~/.cursor/agents/&lt;name&gt;.md</code></td>
+            <td class="px-4 py-3 text-slate-600">공식 <code>/create-subagent</code> 명령 없음. 수동 파일 또는 자연어로 생성 요청.</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-semibold">MCP</td>
+            <td class="px-4 py-3"><code>.cursor\mcp.json</code></td>
+            <td class="px-4 py-3"><code>%USERPROFILE%\.cursor\mcp.json</code></td>
+            <td class="px-4 py-3 text-slate-500"><code>~/.cursor/mcp.json</code></td>
+            <td class="px-4 py-3 text-slate-600">동명 서버는 프로젝트가 우선. Settings → "Add new global MCP server"로 편집기 오픈.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Tips / Plan C reminder -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
+      <div class="rounded-2xl bg-white border border-slate-200 p-6 shadow-sm">
+        <div class="flex items-center gap-2 mb-3 text-blue-700"><i data-lucide="info" class="w-5 h-5"></i><span class="text-xs uppercase tracking-wider font-bold">Plan C 리마인드</span></div>
+        <p class="text-sm text-slate-700 leading-relaxed">Cursor <strong>Free 플랜은 BYOK로 Gemini 모델을 수동 선택할 수 없습니다</strong>. 본 강의는 Cursor 내장 LLM(대화·편집)과 별도 터미널의 Gemini API 호출(Python)로 분리한 하이브리드를 사용합니다.</p>
+      </div>
+      <div class="rounded-2xl bg-white border border-slate-200 p-6 shadow-sm">
+        <div class="flex items-center gap-2 mb-3 text-emerald-700"><i data-lucide="share-2" class="w-5 h-5"></i><span class="text-xs uppercase tracking-wider font-bold">공유 체크리스트</span></div>
+        <ul class="text-sm text-slate-700 space-y-1.5">
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600 mt-0.5"></i>Skill/Agent 디렉토리를 git에 커밋 (팀 공유 표준)</li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600 mt-0.5"></i>README에 설치 경로 명시 — Windows: <code>%USERPROFILE%\.cursor\...</code>, macOS: <code>~/.cursor/...</code></li>
+          <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600 mt-0.5"></i>Cursor Directory는 "복붙 방식"이 공식 설치 경로</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MCP catalog -->
+<section id="mcp-catalog" class="py-20 px-6 md:px-12 lg:px-24 bg-white border-t border-slate-200">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-3">공식 MCP 서버 5종 카탈로그</h2>
+    <p class="text-slate-600 mb-10 max-w-3xl">레포: <a href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener" class="text-blue-700 font-medium">modelcontextprotocol/servers</a>. <code>mcp.json</code>의 <code>command: "npx"</code>로 바로 실행되는 기본 5종.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="rounded-2xl p-6 bg-slate-50 border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all">
+        <div class="flex items-center gap-2 text-blue-700 mb-2"><i data-lucide="folder-open" class="w-5 h-5"></i><span class="font-bold">filesystem</span></div>
+        <p class="text-sm text-slate-700 leading-relaxed mb-3">파일 읽기/쓰기/검색, 허용 디렉토리 제어. 본 강의 실습 A의 핵심 서버.</p>
+        <code class="block text-xs bg-slate-900 text-emerald-300 p-2 rounded">npx -y @modelcontextprotocol/server-filesystem &lt;dir&gt;</code>
+      </div>
+      <div class="rounded-2xl p-6 bg-slate-50 border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all">
+        <div class="flex items-center gap-2 text-blue-700 mb-2"><i data-lucide="git-branch" class="w-5 h-5"></i><span class="font-bold">git</span></div>
+        <p class="text-sm text-slate-700 leading-relaxed mb-3">Git 리포 읽기/검색/조작. 브랜치·커밋 로그 조회 등 개발 워크플로 시연용.</p>
+        <code class="block text-xs bg-slate-900 text-emerald-300 p-2 rounded">npx -y @modelcontextprotocol/server-git</code>
+      </div>
+      <div class="rounded-2xl p-6 bg-slate-50 border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all">
+        <div class="flex items-center gap-2 text-blue-700 mb-2"><i data-lucide="brain" class="w-5 h-5"></i><span class="font-bold">memory</span></div>
+        <p class="text-sm text-slate-700 leading-relaxed mb-3">지식 그래프 기반 영구 메모리. "에이전트가 기억하게 하기" 컨셉.</p>
+        <code class="block text-xs bg-slate-900 text-emerald-300 p-2 rounded">npx -y @modelcontextprotocol/server-memory</code>
+      </div>
+      <div class="rounded-2xl p-6 bg-slate-50 border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all">
+        <div class="flex items-center gap-2 text-blue-700 mb-2"><i data-lucide="globe" class="w-5 h-5"></i><span class="font-bold">fetch</span></div>
+        <p class="text-sm text-slate-700 leading-relaxed mb-3">웹 페이지 가져오기 + markdown 변환. 캡스톤 팩트체크 단계에서 유용.</p>
+        <code class="block text-xs bg-slate-900 text-emerald-300 p-2 rounded">npx -y @modelcontextprotocol/server-fetch</code>
+      </div>
+      <div class="rounded-2xl p-6 bg-slate-50 border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all">
+        <div class="flex items-center gap-2 text-blue-700 mb-2"><i data-lucide="clock" class="w-5 h-5"></i><span class="font-bold">time</span></div>
+        <p class="text-sm text-slate-700 leading-relaxed mb-3">시간/시간대 변환. 가장 단순한 MCP 서버로 첫 튜토리얼에 최적.</p>
+        <code class="block text-xs bg-slate-900 text-emerald-300 p-2 rounded">npx -y @modelcontextprotocol/server-time</code>
+      </div>
+      <div class="rounded-2xl p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200">
+        <div class="flex items-center gap-2 text-blue-700 mb-2"><i data-lucide="book" class="w-5 h-5"></i><span class="font-bold">추가 참고</span></div>
+        <p class="text-sm text-slate-700 leading-relaxed">
+          <strong>sequential-thinking</strong>(단계 분해), <strong>everything</strong>(학습용 통합 샘플).
+          전체 카탈로그는 <a href="https://modelcontextprotocol.io/examples" target="_blank" rel="noopener" class="text-blue-700 font-semibold">modelcontextprotocol.io/examples</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gemini limits -->
+<section id="gemini" class="py-20 px-6 md:px-12 lg:px-24 bg-slate-50 border-t border-slate-200">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-3">Gemini 무료 티어 한도</h2>
+    <p class="text-slate-600 mb-8 max-w-3xl">2026-04 기준. Google AI Studio 대시보드에서 계정별 실제 수치 확인 권장. <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" class="text-blue-700 font-medium">API Key 발급 페이지</a>.</p>
+
+    <div class="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden">
+      <table class="w-full text-sm">
+        <thead class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+          <tr>
+            <th class="text-left px-4 py-3 font-semibold">모델</th>
+            <th class="text-left px-4 py-3 font-semibold">RPM (분당)</th>
+            <th class="text-left px-4 py-3 font-semibold">RPD (일일)</th>
+            <th class="text-left px-4 py-3 font-semibold">추천 용도</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-200">
+          <tr>
+            <td class="px-4 py-3 font-semibold">gemini-2.5-pro</td>
+            <td class="px-4 py-3">5</td>
+            <td class="px-4 py-3">100</td>
+            <td class="px-4 py-3 text-slate-600">최고 성능, 일일 한도 가장 타이트</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-semibold">gemini-2.5-flash</td>
+            <td class="px-4 py-3">10</td>
+            <td class="px-4 py-3">250</td>
+            <td class="px-4 py-3 text-slate-600">범용 기본 추천 (본 강의 기본값)</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-semibold">gemini-2.5-flash-lite</td>
+            <td class="px-4 py-3">15</td>
+            <td class="px-4 py-3">1,000</td>
+            <td class="px-4 py-3 text-slate-600">경량, 교실 단체 실행 시 권장</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-6 rounded-2xl bg-amber-50 border border-amber-200 p-5 text-sm text-amber-900">
+      <div class="flex items-start gap-2">
+        <i data-lucide="triangle-alert" class="w-5 h-5 mt-0.5 shrink-0"></i>
+        <div>
+          <strong>20명 교실에서 동시에 캡스톤을 돌리면</strong> gemini-2.5-flash 250 RPD는 빠르게 소진될 수 있습니다.
+          이럴 땐 (1) gemini-2.5-flash-lite로 전환 (2) 더미 데이터 모드로 I/O만 시연 (3) 순서제 실행 중 택1.
+          Google은 2025-12-07부터 무료 티어를 50~80% 축소했으니 숫자는 "2026-04 기준"으로 명시하세요.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Glossary -->
+<section id="glossary" class="py-20 px-6 md:px-12 lg:px-24 bg-white border-t border-slate-200">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-3">용어집</h2>
+    <p class="text-slate-600 mb-10">본 강의에서 처음 만나는 용어들. 같은 비유는 모든 모듈 본문에서 일관되게 재사용합니다.</p>
+    <div id="glossaryContent" class="prose-light"></div>
+  </div>
+</section>
+
+<!-- Advanced challenges -->
+<section id="advanced" class="py-20 px-6 md:px-12 lg:px-24 bg-slate-50 border-t border-slate-200">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-3">심화 과제 C1 ~ C3</h2>
+    <p class="text-slate-600 max-w-3xl mb-10">수업에서는 아이디어만 제시합니다. 캡스톤 B를 완료한 뒤 직접 확장해 보세요.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="rounded-2xl p-6 bg-white border border-slate-200 shadow-sm">
+        <div class="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2">C1 · 병렬 확장</div>
+        <h3 class="text-lg font-bold mb-2">일본 뉴스 Agent 추가</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">jp-news-agent를 병렬 라인에 추가. 3개국 비교 표 컬럼을 하나 늘리고 orchestrator의 fan-out 리스트만 수정.</p>
+      </div>
+      <div class="rounded-2xl p-6 bg-white border border-slate-200 shadow-sm">
+        <div class="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-2">C2 · 크로스 체크</div>
+        <h3 class="text-lg font-bold mb-2">Playwright로 원문 URL 검증</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">fact-checker가 실제 페이지를 헤드리스 브라우저로 열어 타이틀·본문을 확인. 404/리다이렉트 감지 후 리포트에 반영.</p>
+      </div>
+      <div class="rounded-2xl p-6 bg-white border border-slate-200 shadow-sm">
+        <div class="text-xs font-bold text-indigo-700 uppercase tracking-wider mb-2">C3 · 배달 자동화</div>
+        <h3 class="text-lg font-bold mb-2">Slack 웹훅 자동 배달</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">orchestrator 종료 훅에 incoming webhook POST 추가. OS 스케줄러 또는 GitHub Actions로 매일 오전 9시 자동 실행.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Official links -->
+<section id="links" class="py-20 px-6 md:px-12 lg:px-24 bg-[#0f172a] text-white">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-3">공식 링크 모음</h2>
+    <p class="text-slate-300 max-w-3xl mb-10">이 과정의 모든 기술 주장은 아래 1순위 출처에 근거합니다.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="glass p-6">
+        <h3 class="font-bold mb-3 flex items-center gap-2 text-blue-200"><i data-lucide="square-pen" class="w-4 h-4"></i>Cursor</h3>
+        <ul class="space-y-2 text-sm text-slate-300">
+          <li><a href="https://cursor.com/docs" class="hover:text-white" target="_blank" rel="noopener">cursor.com/docs</a></li>
+          <li><a href="https://cursor.com/docs/context/rules" class="hover:text-white" target="_blank" rel="noopener">Rules</a></li>
+          <li><a href="https://cursor.com/docs/context/skills" class="hover:text-white" target="_blank" rel="noopener">Agent Skills</a></li>
+          <li><a href="https://cursor.com/docs/subagents" class="hover:text-white" target="_blank" rel="noopener">Subagents</a></li>
+          <li><a href="https://cursor.com/docs/context/mcp" class="hover:text-white" target="_blank" rel="noopener">MCP 설정</a></li>
+          <li><a href="https://cursor.directory" class="hover:text-white" target="_blank" rel="noopener">cursor.directory (커뮤니티 허브)</a></li>
+        </ul>
+      </div>
+      <div class="glass p-6">
+        <h3 class="font-bold mb-3 flex items-center gap-2 text-emerald-200"><i data-lucide="plug" class="w-4 h-4"></i>Model Context Protocol</h3>
+        <ul class="space-y-2 text-sm text-slate-300">
+          <li><a href="https://modelcontextprotocol.io" class="hover:text-white" target="_blank" rel="noopener">modelcontextprotocol.io</a></li>
+          <li><a href="https://modelcontextprotocol.io/specification/2025-11-25" class="hover:text-white" target="_blank" rel="noopener">최신 스펙 (2025-11-25)</a></li>
+          <li><a href="https://github.com/modelcontextprotocol/servers" class="hover:text-white" target="_blank" rel="noopener">공식 서버 레포</a></li>
+          <li><a href="https://modelcontextprotocol.io/examples" class="hover:text-white" target="_blank" rel="noopener">Example Servers</a></li>
+          <li><a href="https://www.npmjs.com/package/@modelcontextprotocol/server-filesystem" class="hover:text-white" target="_blank" rel="noopener">server-filesystem (npm)</a></li>
+        </ul>
+      </div>
+      <div class="glass p-6">
+        <h3 class="font-bold mb-3 flex items-center gap-2 text-indigo-200"><i data-lucide="wand-2" class="w-4 h-4"></i>Google Gemini</h3>
+        <ul class="space-y-2 text-sm text-slate-300">
+          <li><a href="https://ai.google.dev" class="hover:text-white" target="_blank" rel="noopener">ai.google.dev</a></li>
+          <li><a href="https://ai.google.dev/gemini-api/docs/api-key" class="hover:text-white" target="_blank" rel="noopener">API Key 발급</a></li>
+          <li><a href="https://ai.google.dev/gemini-api/docs/rate-limits" class="hover:text-white" target="_blank" rel="noopener">Rate limits</a></li>
+          <li><a href="https://aistudio.google.com/app/apikey" class="hover:text-white" target="_blank" rel="noopener">AI Studio 대시보드</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#0b1220] text-slate-400 py-10 px-6 md:px-12 lg:px-24 border-t border-white/5 text-sm">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-3">
+    <span>© 2026 Samsung SDS · Agentic AI 1회차 · 사내 교육용</span>
+    <span>문의: namho.cho@samsung.com</span>
+  </div>
+</footer>
+
+<!-- Mobile drawer -->
+<div id="sdsDrawer" class="drawer">
+  <div id="sdsDrawerBackdrop" class="drawer-backdrop"></div>
+  <div class="drawer-panel dark-scroll">
+    <button id="sdsDrawerClose" class="absolute top-3 right-3 text-white/70 hover:text-white p-2" aria-label="닫기"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <div class="text-white font-bold text-lg mb-4">SDS Agentic AI</div>
+    <nav class="flex flex-col gap-1 text-sm">
+      <a href="index.html" class="sidebar-item">홈</a>
+      <a href="curriculum.html" class="sidebar-item">커리큘럼</a>
+      <a href="practices.html" class="sidebar-item">실습</a>
+      <a href="resources.html" class="sidebar-item active">자료</a>
+    </nav>
+  </div>
+</div>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="assets/app.js" defer></script>
+</body>
+</html>

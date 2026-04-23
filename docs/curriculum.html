@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>커리큘럼 · SDS Agentic AI 1회차</title>
+  <meta name="description" content="8개 모듈 (00 환경 설정 ~ 07 캡스톤) · 4.5시간 · Cursor + Gemini 하이브리드(Plan C). 사이드바에서 모듈을 선택해 학습하세요." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>@import "https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css";</style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github-dark.min.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="bg-[#0f172a] text-white font-sans selection:bg-blue-500">
+
+<!-- NAV -->
+<nav id="sdsNav" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-3 nav-scrolled">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+    <a href="index.html" class="flex items-center gap-2 text-white">
+      <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center shadow-lg"><i data-lucide="sparkles" class="w-5 h-5"></i></span>
+      <span class="font-black tracking-tight text-lg">SDS Agentic AI</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 font-medium text-sm text-white/80">
+      <a href="index.html#overview" class="hover:text-white">개요</a>
+      <a href="curriculum.html" class="text-blue-300">커리큘럼</a>
+      <a href="practices.html" class="hover:text-white">실습</a>
+      <a href="resources.html" class="hover:text-white">자료</a>
+    </div>
+    <button id="sdsDrawerOpen" aria-label="모듈 메뉴" class="md:hidden p-2 rounded-full text-white hover:bg-white/10">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- 3-column shell (Desktop) -->
+<div class="pt-20 max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[280px_1fr_260px] gap-6 px-4 md:px-6 pb-20">
+
+  <!-- Sidebar -->
+  <aside class="hidden lg:block lg:sticky lg:top-20 self-start h-[calc(100vh-6rem)] overflow-y-auto dark-scroll">
+    <div class="mb-4 px-2">
+      <div class="text-xs uppercase tracking-widest text-blue-300 font-semibold mb-2">모듈 (8)</div>
+      <p class="text-xs text-slate-500 leading-relaxed">총 4.5시간 · 준비 → 입문 → 중상</p>
+    </div>
+    <nav id="sdsSidebar" class="flex flex-col gap-1 pr-2"></nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="min-w-0">
+    <div id="moduleMeta" class="flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl px-5 py-4 mb-6 backdrop-blur-lg"></div>
+
+    <article id="moduleContent" class="prose-custom"></article>
+
+    <div class="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-sm text-slate-400">
+      <a href="practices.html" class="hover:text-white inline-flex items-center gap-1"><i data-lucide="arrow-right-circle" class="w-4 h-4"></i> 실습 A/B 상세로</a>
+      <a href="resources.html" class="hover:text-white inline-flex items-center gap-1">자료·치트시트 <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+    </div>
+  </main>
+
+  <!-- Right rail -->
+  <aside class="hidden lg:block lg:sticky lg:top-20 self-start h-[calc(100vh-6rem)] overflow-y-auto dark-scroll">
+    <button data-slide-open class="w-full bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-2xl p-4 text-left hover:shadow-xl transition-shadow mb-5 border border-white/10">
+      <div class="flex items-center gap-2 mb-1"><i data-lucide="presentation" class="w-4 h-4"></i><span class="text-xs font-semibold uppercase tracking-wider">Slides</span></div>
+      <div class="text-sm font-bold">이 모듈 슬라이드 보기</div>
+      <div class="text-xs opacity-80 mt-1">← → · Esc · T 썸네일 · A 전체</div>
+    </button>
+    <div class="mb-2 px-1 text-xs uppercase tracking-wider text-blue-300 font-semibold">목차</div>
+    <div id="moduleTOC" class="px-1"></div>
+  </aside>
+</div>
+
+<!-- Slide modal -->
+<div id="slideModal" class="slide-modal" role="dialog" aria-modal="true" aria-label="슬라이드 뷰어">
+  <button id="slideClose" class="slide-close" aria-label="닫기"><i data-lucide="x" class="w-5 h-5"></i></button>
+  <button id="slideAllToggle" class="slide-all-toggle" aria-label="전체 슬라이드 보기 토글" title="A 키로 전체/현재 모듈 전환"><i data-lucide="layout-grid" class="w-3.5 h-3.5"></i> 전체 슬라이드 보기 (A)</button>
+  <button id="slidePrev" class="slide-nav-btn prev" aria-label="이전"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+  <div id="slideStage" class="slide-stage"></div>
+  <button id="slideNext" class="slide-nav-btn next" aria-label="다음"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+</div>
+
+<!-- Slide grid (thumbnails) -->
+<div id="slideGrid" class="slide-grid">
+  <div id="slideGridBackdrop" class="absolute inset-0"></div>
+  <div class="relative max-w-6xl mx-auto">
+    <div class="flex items-center justify-between mb-6 text-white">
+      <h3 class="text-xl font-bold">슬라이드 썸네일</h3>
+      <button onclick="document.getElementById('slideGrid').classList.remove('open')" class="text-white/70 hover:text-white text-sm">닫기 (T 또는 Esc)</button>
+    </div>
+    <div id="slideGridWrap" class="slide-grid-wrap"></div>
+  </div>
+</div>
+
+<!-- Mobile drawer -->
+<div id="sdsDrawer" class="drawer">
+  <div id="sdsDrawerBackdrop" class="drawer-backdrop"></div>
+  <div class="drawer-panel dark-scroll">
+    <button id="sdsDrawerClose" class="absolute top-3 right-3 text-white/70 hover:text-white p-2" aria-label="닫기"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <div class="text-white font-bold text-lg mb-2">모듈 목록</div>
+    <p class="text-xs text-slate-500 mb-4">해시 라우팅: <code>#/modules/{id}</code></p>
+    <nav id="sdsDrawerList" class="flex flex-col gap-1"></nav>
+    <button data-slide-open class="mt-6 w-full bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-xl p-3 text-sm font-semibold">슬라이드 뷰어 열기</button>
+  </div>
+</div>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/powershell.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script src="assets/app.js" defer></script>
+
+</body>
+</html>
